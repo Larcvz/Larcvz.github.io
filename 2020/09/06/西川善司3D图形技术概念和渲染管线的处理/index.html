@@ -7,12 +7,12 @@
   
   <title>西川善司3D图形技术概念和渲染管线的处理 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="[toc] # 3D图形技术概念和渲染管线的处理 ## 一：3D图形的概念 \3D图形管线的流程图** 图1是3D图形的流程模型。这个虽然是对应DirectX 10&#x2F;SM4的GPU流程模型，不过部分流程会根据GPU的不同，有时会有更细致的处理，有时也会做一些简略，这点敬请谅解。 　　首先，介绍一下3D图形的处理为什么会变成这样的根本原因。会变成这个样子，是由于在漫长又短暂的实时3D图形历史中，这个">
+  <meta name="description" content="# 3D图形技术概念和渲染管线的处理 ## 一：3D图形的概念 \3D图形管线的流程图** 图1是3D图形的流程模型。这个虽然是对应DirectX 10&#x2F;SM4的GPU流程模型，不过部分流程会根据GPU的不同，有时会有更细致的处理，有时也会做一些简略，这点敬请谅解。 　　首先，介绍一下3D图形的处理为什么会变成这样的根本原因。会变成这个样子，是由于在漫长又短暂的实时3D图形历史中，这个部分需要进行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="西川善司3D图形技术概念和渲染管线的处理">
 <meta property="og:url" content="http://example.com/2020/09/06/%E8%A5%BF%E5%B7%9D%E5%96%84%E5%8F%B83D%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5%E5%92%8C%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E7%9A%84%E5%A4%84%E7%90%86/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="[toc] # 3D图形技术概念和渲染管线的处理 ## 一：3D图形的概念 \3D图形管线的流程图** 图1是3D图形的流程模型。这个虽然是对应DirectX 10&#x2F;SM4的GPU流程模型，不过部分流程会根据GPU的不同，有时会有更细致的处理，有时也会做一些简略，这点敬请谅解。 　　首先，介绍一下3D图形的处理为什么会变成这样的根本原因。会变成这个样子，是由于在漫长又短暂的实时3D图形历史中，这个">
+<meta property="og:description" content="# 3D图形技术概念和渲染管线的处理 ## 一：3D图形的概念 \3D图形管线的流程图** 图1是3D图形的流程模型。这个虽然是对应DirectX 10&#x2F;SM4的GPU流程模型，不过部分流程会根据GPU的不同，有时会有更细致的处理，有时也会做一些简略，这点敬请谅解。 　　首先，介绍一下3D图形的处理为什么会变成这样的根本原因。会变成这个样子，是由于在漫长又短暂的实时3D图形历史中，这个部分需要进行">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg">
 <meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg">
@@ -32,10 +32,12 @@
 <meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2403/9f073d46-36c7-3883-93a8-bfeb3f19f3f1.jpg">
 <meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2398/9cd8d7c0-f15e-3996-b6f4-2bee652e4326.jpg">
 <meta property="article:published_time" content="2020-09-06T14:02:41.000Z">
-<meta property="article:modified_time" content="2020-09-07T08:11:19.679Z">
+<meta property="article:modified_time" content="2020-09-07T08:17:04.458Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="graphic">
 <meta property="article:tag" content="OpenGl">
+<meta property="article:tag" content="Computer Graphics">
+<meta property="article:tag" content="Graphics Pipeline">
+<meta property="article:tag" content="DirectX">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg">
   
@@ -108,8 +110,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>[toc]</p>
-<p><strong># 3D图形技术概念和渲染管线的处理</strong></p>
+        <p><strong># 3D图形技术概念和渲染管线的处理</strong></p>
 <p><strong>## 一：3D图形的概念</strong></p>
 <p><strong><em>\</em>3D图形管线的流程图**</strong></p>
 <p>图1是3D图形的流程模型。这个虽然是对应DirectX 10/SM4的GPU流程模型，不过部分流程会根据GPU的不同，有时会有更细致的处理，有时也会做一些简略，这点敬请谅解。</p>
@@ -229,7 +230,7 @@
       <a data-url="http://example.com/2020/09/06/%E8%A5%BF%E5%B7%9D%E5%96%84%E5%8F%B83D%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5%E5%92%8C%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E7%9A%84%E5%A4%84%E7%90%86/" data-id="ckes8xhy00000c8vrgetvbzxp" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGl/" rel="tag">OpenGl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/graphic/" rel="tag">graphic</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Computer-Graphics/" rel="tag">Computer Graphics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DirectX/" rel="tag">DirectX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Graphics-Pipeline/" rel="tag">Graphics Pipeline</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGl/" rel="tag">OpenGl</a></li></ul>
 
     </footer>
   </div>
@@ -259,7 +260,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenGl/" rel="tag">OpenGl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graphic/" rel="tag">graphic</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-Graphics/" rel="tag">Computer Graphics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DirectX/" rel="tag">DirectX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graphics-Pipeline/" rel="tag">Graphics Pipeline</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenGl/" rel="tag">OpenGl</a></li></ul>
     </div>
   </div>
 
@@ -269,7 +270,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/OpenGl/" style="font-size: 10px;">OpenGl</a> <a href="/tags/graphic/" style="font-size: 10px;">graphic</a>
+      <a href="/tags/Computer-Graphics/" style="font-size: 10px;">Computer Graphics</a> <a href="/tags/DirectX/" style="font-size: 10px;">DirectX</a> <a href="/tags/Graphics-Pipeline/" style="font-size: 10px;">Graphics Pipeline</a> <a href="/tags/OpenGl/" style="font-size: 10px;">OpenGl</a>
     </div>
   </div>
 
