@@ -86,7 +86,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="3D图形技术概念和渲染管线的处理"><a href="#3D图形技术概念和渲染管线的处理" class="headerlink" title="3D图形技术概念和渲染管线的处理"></a>3D图形技术概念和渲染管线的处理</h1><h2 id="一：3D图形的概念"><a href="#一：3D图形的概念" class="headerlink" title="一：3D图形的概念"></a>一：3D图形的概念</h2><p><strong>3D图形管线的流程图</strong></p>
+        <p>作者：trace<br>校对&amp;注解：千里马肝<br>来源：OpenGPU</p>
+<h1 id="3D图形技术概念和渲染管线的处理"><a href="#3D图形技术概念和渲染管线的处理" class="headerlink" title="3D图形技术概念和渲染管线的处理"></a>3D图形技术概念和渲染管线的处理</h1><h2 id="一：3D图形的概念"><a href="#一：3D图形的概念" class="headerlink" title="一：3D图形的概念"></a>一：3D图形的概念</h2><p><strong>3D图形管线的流程图</strong></p>
 <p>图1是3D图形的流程模型。这个虽然是对应DirectX 10/SM4的GPU流程模型，不过部分流程会根据GPU的不同，有时会有更细致的处理，有时也会做一些简略，这点敬请谅解。</p>
 <p>　　首先，介绍一下3D图形的处理为什么会变成这样的根本原因。会变成这个样子，是由于在漫长又短暂的实时3D图形历史中，这个部分需要进行最顺畅 的处理，更重要的是因为这样设计GPU会更容易实现的原因。这个流程不管是在Direct3D还是在OpenGL里都没有太大的差异。</p>
 <p><img src="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg" alt="点击查看原始大小图片"></p>
