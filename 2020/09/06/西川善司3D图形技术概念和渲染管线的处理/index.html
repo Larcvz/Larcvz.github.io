@@ -5,15 +5,39 @@
   
 
   
-  <title>Hexo</title>
+  <title>西川善司3D图形技术概念和渲染管线的处理 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="[toc] # 3D图形技术概念和渲染管线的处理 ## 一：3D图形的概念 \3D图形管线的流程图** 图1是3D图形的流程模型。这个虽然是对应DirectX 10&#x2F;SM4的GPU流程模型，不过部分流程会根据GPU的不同，有时会有更细致的处理，有时也会做一些简略，这点敬请谅解。 　　首先，介绍一下3D图形的处理为什么会变成这样的根本原因。会变成这个样子，是由于在漫长又短暂的实时3D图形历史中，这个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="西川善司3D图形技术概念和渲染管线的处理">
+<meta property="og:url" content="http://example.com/2020/09/06/%E8%A5%BF%E5%B7%9D%E5%96%84%E5%8F%B83D%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5%E5%92%8C%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E7%9A%84%E5%A4%84%E7%90%86/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[toc] # 3D图形技术概念和渲染管线的处理 ## 一：3D图形的概念 \3D图形管线的流程图** 图1是3D图形的流程模型。这个虽然是对应DirectX 10&#x2F;SM4的GPU流程模型，不过部分流程会根据GPU的不同，有时会有更细致的处理，有时也会做一些简略，这点敬请谅解。 　　首先，介绍一下3D图形的处理为什么会变成这样的根本原因。会变成这个样子，是由于在漫长又短暂的实时3D图形历史中，这个">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2380/5a54cd9e-b08d-3376-9966-6cf1a80fcf22.jpg">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2382/4ac9efef-6a7d-3def-8ba2-e741d722e510.jpg">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2384/eaa8cbc1-2f30-309e-95a7-9422f81c89ba.jpg">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2386/dc1018c9-3bb4-3f91-82d1-e758be6f6b63.jpg">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2388/08b9d71a-b676-3451-a8b3-70537921a52f.jpg">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2390/0ebe3f85-1f45-3eb6-8054-b35dcfe483ac.jpg">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2392/2d355134-7ae5-3eb6-8228-731d0f075220.jpg">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2394/c125347f-ec9c-30fe-b2f5-d953716fbf07.jpg">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2396/f2505247-de76-32c3-bc13-edc82833dfa5.jpg">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2398/9cd8d7c0-f15e-3996-b6f4-2bee652e4326.jpg">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2401/7f07c2e5-e8e1-33bd-a790-088cc7c1017f.jpg">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2403/9f073d46-36c7-3883-93a8-bfeb3f19f3f1.jpg">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2398/9cd8d7c0-f15e-3996-b6f4-2bee652e4326.jpg">
+<meta property="article:published_time" content="2020-09-06T14:02:41.000Z">
+<meta property="article:modified_time" content="2020-09-07T08:11:19.679Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="graphic">
+<meta property="article:tag" content="OpenGl">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -62,9 +86,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-西川善司3D图形技术概念和渲染管线的处理" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-西川善司3D图形技术概念和渲染管线的处理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/06/%E8%A5%BF%E5%B7%9D%E5%96%84%E5%8F%B83D%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5%E5%92%8C%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E7%9A%84%E5%A4%84%E7%90%86/" class="article-date">
   <time datetime="2020-09-06T14:02:41.000Z" itemprop="datePublished">2020-09-06</time>
@@ -77,8 +99,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/06/%E8%A5%BF%E5%B7%9D%E5%96%84%E5%8F%B83D%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5%E5%92%8C%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E7%9A%84%E5%A4%84%E7%90%86/">西川善司3D图形技术概念和渲染管线的处理</a>
+    <h1 class="article-title" itemprop="name">
+      西川善司3D图形技术概念和渲染管线的处理
     </h1>
   
 
@@ -212,60 +234,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/06/hello-world/" class="article-date">
-  <time datetime="2020-09-06T13:48:06.440Z" itemprop="datePublished">2020-09-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/06/hello-world/">Hello World</a>
-    </h1>
+    <a href="/2020/09/06/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/06/hello-world/" data-id="cker5nkmh0000w0vre0uc29rg" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
