@@ -7,12 +7,12 @@
   
   <title>西川善司3D图形技术概念和渲染管线的处理 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="# 3D图形技术概念和渲染管线的处理 ## 一：3D图形的概念 \3D图形管线的流程图** 图1是3D图形的流程模型。这个虽然是对应DirectX 10&#x2F;SM4的GPU流程模型，不过部分流程会根据GPU的不同，有时会有更细致的处理，有时也会做一些简略，这点敬请谅解。 　　首先，介绍一下3D图形的处理为什么会变成这样的根本原因。会变成这个样子，是由于在漫长又短暂的实时3D图形历史中，这个部分需要进行">
+  <meta name="description" content="3D图形技术概念和渲染管线的处理一：3D图形的概念3D图形管线的流程图 图1是3D图形的流程模型。这个虽然是对应DirectX 10&#x2F;SM4的GPU流程模型，不过部分流程会根据GPU的不同，有时会有更细致的处理，有时也会做一些简略，这点敬请谅解。 　　首先，介绍一下3D图形的处理为什么会变成这样的根本原因。会变成这个样子，是由于在漫长又短暂的实时3D图形历史中，这个部分需要进行最顺畅 的处理，更重">
 <meta property="og:type" content="article">
 <meta property="og:title" content="西川善司3D图形技术概念和渲染管线的处理">
 <meta property="og:url" content="http://example.com/2020/09/06/%E8%A5%BF%E5%B7%9D%E5%96%84%E5%8F%B83D%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5%E5%92%8C%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E7%9A%84%E5%A4%84%E7%90%86/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="# 3D图形技术概念和渲染管线的处理 ## 一：3D图形的概念 \3D图形管线的流程图** 图1是3D图形的流程模型。这个虽然是对应DirectX 10&#x2F;SM4的GPU流程模型，不过部分流程会根据GPU的不同，有时会有更细致的处理，有时也会做一些简略，这点敬请谅解。 　　首先，介绍一下3D图形的处理为什么会变成这样的根本原因。会变成这个样子，是由于在漫长又短暂的实时3D图形历史中，这个部分需要进行">
+<meta property="og:description" content="3D图形技术概念和渲染管线的处理一：3D图形的概念3D图形管线的流程图 图1是3D图形的流程模型。这个虽然是对应DirectX 10&#x2F;SM4的GPU流程模型，不过部分流程会根据GPU的不同，有时会有更细致的处理，有时也会做一些简略，这点敬请谅解。 　　首先，介绍一下3D图形的处理为什么会变成这样的根本原因。会变成这个样子，是由于在漫长又短暂的实时3D图形历史中，这个部分需要进行最顺畅 的处理，更重">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg">
 <meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg">
@@ -32,12 +32,12 @@
 <meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2403/9f073d46-36c7-3883-93a8-bfeb3f19f3f1.jpg">
 <meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0085/2398/9cd8d7c0-f15e-3996-b6f4-2bee652e4326.jpg">
 <meta property="article:published_time" content="2020-09-06T14:02:41.000Z">
-<meta property="article:modified_time" content="2020-09-07T08:17:04.458Z">
+<meta property="article:modified_time" content="2020-09-07T08:33:32.754Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="OpenGl">
 <meta property="article:tag" content="Computer Graphics">
 <meta property="article:tag" content="Graphics Pipeline">
 <meta property="article:tag" content="DirectX">
+<meta property="article:tag" content="OpenGl">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg">
   
@@ -110,20 +110,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong># 3D图形技术概念和渲染管线的处理</strong></p>
-<p><strong>## 一：3D图形的概念</strong></p>
-<p><strong><em>\</em>3D图形管线的流程图**</strong></p>
+        <h1 id="3D图形技术概念和渲染管线的处理"><a href="#3D图形技术概念和渲染管线的处理" class="headerlink" title="3D图形技术概念和渲染管线的处理"></a>3D图形技术概念和渲染管线的处理</h1><h2 id="一：3D图形的概念"><a href="#一：3D图形的概念" class="headerlink" title="一：3D图形的概念"></a>一：3D图形的概念</h2><p><strong>3D图形管线的流程图</strong></p>
 <p>图1是3D图形的流程模型。这个虽然是对应DirectX 10/SM4的GPU流程模型，不过部分流程会根据GPU的不同，有时会有更细致的处理，有时也会做一些简略，这点敬请谅解。</p>
 <p>　　首先，介绍一下3D图形的处理为什么会变成这样的根本原因。会变成这个样子，是由于在漫长又短暂的实时3D图形历史中，这个部分需要进行最顺畅 的处理，更重要的是因为这样设计GPU会更容易实现的原因。这个流程不管是在Direct3D还是在OpenGL里都没有太大的差异。</p>
 <p><img src="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg" alt="点击查看原始大小图片"></p>
-<p> GPU内部的渲染流程</p>
+<!-- read more --> 
+
+<p>GPU内部的渲染流程</p>
 <p>　  <strong>CPU负责的3D图形处理部分 = 游戏引擎?</strong></p>
 <p>　　图1的[1]和[2]的部分，主要是在CPU里进行的处理。</p>
 <p>　　配置3D物体或是移动后再设置，因为这两种很类似，所以把这些在系统中处理的部分全部称作[游戏引擎]。</p>
 <p>　　在游戏引擎中，遵从键盘输入、鼠标输入、游戏控制输入让3D角色移动，或是进行开枪击中敌人的命中时的碰撞检测，根据碰撞的结果，虽然要进行把3D角色们击飞的物理模拟，但这些是游戏逻辑的部分，某种意味上，是和[1][2]相同的部分。</p>
 <p>　　另外，在[2]中如果有对应DirectX 10/SM4.0的GPU，要是能利用Geometry Shader，那么也可以在GPU上进行了，例如关于particle或billboard这样的point sprite，把创建和销毁用Geometry Shader来处理，就可以实现让GPU介入的处理。虽然如此，一般的3D游戏处理中，这部分还是由CPU来处理的部分。</p>
-<p><strong>## 二：坐标系Vertex Pipeline和Vertex Shader的坐标系是什么?</strong></p>
-<p>　　图中红线的[3][4][5][6]的部分，是进行顶点相关处理的顶点管线。</p>
+<h2 id="二：坐标系Vertex-Pipeline和Vertex-Shader的坐标系是什么"><a href="#二：坐标系Vertex-Pipeline和Vertex-Shader的坐标系是什么" class="headerlink" title="二：坐标系Vertex Pipeline和Vertex Shader的坐标系是什么?"></a>二：坐标系Vertex Pipeline和Vertex Shader的坐标系是什么?</h2><p>　　图中红线的[3][4][5][6]的部分，是进行顶点相关处理的顶点管线。</p>
 <p>　　通常从这里开始是在GPU内部进行处理的部分。但是，为了简化内部逻辑以降低成本，所以要让图形机能整合，就是所谓的[统一芯片组]，把这个顶点管线转移到CPU的(仿真)系统也是存在的。</p>
 <p>　　那么，直到稍早之前，很多时候把这个顶点管线称为[几何体处理]。所谓几何体(Geometry)就是是[几何学]。在高中，虽然就会在数学或 是[代数•几何]的课程中，学到[向量(Vector)运算]和[线性映射(Linear Map)或线性变换(Linear Transformation)]，不过这就是那个世界的事了。说句闲话，NVIDIA的GPU，GeForce系列的名字是由「Geometric Force(几何学的力量)」的缩写所造的名词，可以说有着[G-Force重力]的双关语。</p>
 <p>　　把话题转回来，说回3D图形上的[3次元向量]的概念，简单而言想成是[三次元空间上的”方向”]就可以了。这些”方向”被x,y,z的3个轴的坐标值来表示，以这些”方向”为基准的被称之为[坐标系]。</p>
@@ -131,8 +130,7 @@
 <p>　　对了，一般的3D角色上虽然有很多是带有手臂和脚，考虑到那些手脚在关节处弯曲的情况，如果用关节为基准的局部坐标系进行控制会更容易理解，但是这样考虑的话，就要把局部坐标系做成多层的结构，最终的处理会变得不容易理解。</p>
 <p>　　接下来，支配3D全局空间的整体坐标系就很有必要了，这就是[世界坐标系]。在处理3D图形的顶点管线中的顶点单位时，从局部坐标系向世界坐标系的变换会多次发生。</p>
 <p>　　这样生成的顶点要根据shader程序进行坐标系的变换处理，就是[3][顶点着色语言][Vertex Shader]。通过着色器编程，就可以进行独特而特殊的坐标系变换。</p>
-<p><strong>## 三：顶点空间的阴影处理</strong></p>
-<p><img src="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg" alt="点击查看原始大小图片"></p>
+<h2 id="三：顶点空间的阴影处理"><a href="#三：顶点空间的阴影处理" class="headerlink" title="三：顶点空间的阴影处理"></a>三：顶点空间的阴影处理</h2><p><img src="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg" alt="点击查看原始大小图片"></p>
 <p>图1到3的Vertex Shader的工作不光是坐标变换，另一个重要的工作就是顶点空间的阴影处理和光照处理(lighting)。</p>
 <p>　　「坐标变换」是「数学上的」的感觉，所谓“计算”的印象容易想象并理解。可是，在计算机中做光照，也就是说“光的照射”，这样的印象就很难想象是怎么回事。当然GPU因为不是照相机而是计算机，不可能直接拍出光照射后的效果照片，所以需要通过计算来获得。</p>
 <p>　　光一旦照射到物体上，就会在那里反射/扩展和被吸收。如果这个物体有颜色或图案，那么也许就可以看到这个颜色，如果照射的光有颜色，那么就可以看到和物体颜色或图案合成后的颜色。寻求这样的计算处理，就是计算机图形的基本想法。</p>
@@ -141,8 +139,7 @@
 <p>　　这个反射方程，可以表现出想要的各种类型的材质，这个反射方程在程序上的表现就是Vertex Shader程序。并且，实际执行这个顶点单位反射方程的程序，就是Vertex Shader.</p>
 <p>　　在Vertex Shader中，不仅可以进行顶点空间的阴影处理，还可以进行多边形的纹理(Texture)坐标计算。纹理坐标的计算，就是计算出在怎样的多边形上，把 怎样的材质纹理通过什么样的方式贴上去。还有，实际做纹理映射(Texture Mapping)是在[8][9]的Pixel Shader的时候，这里只是纹理映射的准备工作。</p>
 <p><img src="http://dl2.iteye.com/upload/attachment/0085/2380/5a54cd9e-b08d-3376-9966-6cf1a80fcf22.jpg" alt="img"></p>
-<p><strong>## 四：增减顶点的厉害东西</strong></p>
-<p><strong><em>\</em>Geometry Shader可以增减顶点的厉害东西**</strong></p>
+<h2 id="四：增减顶点的厉害东西"><a href="#四：增减顶点的厉害东西" class="headerlink" title="四：增减顶点的厉害东西"></a>四：增减顶点的厉害东西</h2><p><strong>Geometry Shader可以增减顶点的厉害东西</strong></p>
 <p>　　在DirectX 9/SM3.0之前，GPU并不包含Geometry Shader，3D模型的顶点信息是通过CPU这边预先准备好之后，再输入到GPU中，在GPU这里不能随意的进行增减。</p>
 <p>　　为了打碎这个“原则性限制”，拥有可以自由增减顶点功能的着色器就是[Geometry Shader]。</p>
 <p>　　通过Shader程序可以指定Geometry Shader对顶点信息进行增减。还有，因为实际增减的是复数的顶点，所以对各种的线段、多边形、粒子等图元也可以进行增减。</p>
@@ -152,10 +149,8 @@
 <p>　　用Geometry Shader生成的顶点，因为还可以再返回到Vertex Shader，所以可以对返回的顶点重新进行处理。例如普通方法不能实现的，把低多边形的3D模型，在Geometry Shader里通过插值生成更平滑的高多边形，理论上也是可行。</p>
 <p><img src="http://dl2.iteye.com/upload/attachment/0085/2382/4ac9efef-6a7d-3def-8ba2-e741d722e510.jpg" alt="img"></p>
 <p><img src="http://dl2.iteye.com/upload/attachment/0085/2384/eaa8cbc1-2f30-309e-95a7-9422f81c89ba.jpg" alt="img"></p>
-<p><strong>## 五：顶点管线处理的最后</strong></p>
-<p>**</p>
-<p><img src="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg" alt="点击查看原始大小图片"></p>
-<p>** [5][6]是顶点管线最后的处理部分，负责在描绘之前做最后的准备工作。</p>
+<h2 id="五：顶点管线处理的最后"><a href="#五：顶点管线处理的最后" class="headerlink" title="五：顶点管线处理的最后"></a>五：顶点管线处理的最后</h2><p><img src="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg" alt="点击查看原始大小图片"></p>
+<p>​         [5]是顶点管线最后的处理部分，负责在描绘之前做最后的准备工作。</p>
 <p>　　将世界坐标系中的坐标，进一步在[5]上进行变换到照相机视点坐标系的处理。这个相当于照相机在拍摄照片时构图和镜头的部分，这一连串的处理总的来说是[透视变换处理]。</p>
 <p>　　因为3D图形只需要描画出视野内捕捉到的影像就可以了，一旦[5]的处理结束后，就转移到以视野空间为主体来考虑。</p>
 <p>　　[6]是通过判断，将不需要描绘的多边形，在进入实际描绘处理的像素管线之前，进行剔除的处理(也称为Culling处理)。</p>
@@ -167,15 +162,13 @@
 <p>　　Poor vertex locality of new vertices，which hurts CPU and vertex cache coherency</p>
 <p>　　请参考：Guard Band。】</p>
 <p><img src="http://dl2.iteye.com/upload/attachment/0085/2386/dc1018c9-3bb4-3f91-82d1-e758be6f6b63.jpg" alt="img"></p>
-<p><strong>## 六：光栅器</strong></p>
-<p>当变换到视野空间，无用多边形都剔除后，在[7]上进行的是，把到没有实际形态的多边形，绘制为对应在画面上的像素的处理。另外，在最新的3D图形上，并不只是绘制显示帧，也有把场景渲染到纹理的情况，这个时候[7]会进行多边形和纹理像素的处理。</p>
+<h2 id="六：光栅器"><a href="#六：光栅器" class="headerlink" title="六：光栅器"></a>六：光栅器</h2><p>当变换到视野空间，无用多边形都剔除后，在[7]上进行的是，把到没有实际形态的多边形，绘制为对应在画面上的像素的处理。另外，在最新的3D图形上，并不只是绘制显示帧，也有把场景渲染到纹理的情况，这个时候[7]会进行多边形和纹理像素的处理。</p>
 <p>　　在[7]上的处理，实质上是将从顶点管线上把成为顶点单位(多边形单位)输出的计算结果，作为像素单位进行分解，持续的向像素管线发送任务，可以说是起到中介的作用。</p>
 <p>　　这个[7]的处理被称作[triangle setup]，或者是[rasterise处理]，因为是个规范化的处理，所以从1990年代初期的GPU里就作为固定功能实现在GPU里，到现在也没有太大的进化。</p>
 <p>　　通常，一个多边形因为要用多个像素来绘制，所以多边形通过光栅化被分解成大量的Pixel Task。在GPU上Pixel Shader处理单元的数量如此之多，是由于需要处理的像素是如此繁多的原故。</p>
 <p><img src="http://dl2.iteye.com/upload/attachment/0085/2388/08b9d71a-b676-3451-a8b3-70537921a52f.jpg" alt="img"></p>
 <p> Rasterise也可以说成是生成piexl shader的任务书，还有，一个多边型会生成多个pixel task.</p>
-<p><strong>## 七：像素单位阴影处理</strong></p>
-<p><img src="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg" alt="点击查看原始大小图片"></p>
+<h2 id="七：像素单位阴影处理"><a href="#七：像素单位阴影处理" class="headerlink" title="七：像素单位阴影处理"></a>七：像素单位阴影处理</h2><p><img src="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg" alt="点击查看原始大小图片"></p>
 <p> 把由[7]的[rasterise处理]而生成的像素单位进行阴影处理工作的是[8][9]所显示的Pixel Shader部分，还有把包含Render Backend的框架整体统称为[像素管线(Pixel Pipeline)]。</p>
 <p>　　由于GPU的实现形态多种多样，不仅有把[8]中进行像素单位的阴影处理的机能模块称为[Pixel Shader]的情况，也有将后面的纹理单元[Texture Unit]的[9]统称为Pixel Shader的情况。</p>
 <p>　　那么，虽然在[8]的Pixel Shader上进行计算，只不过实际的单位是像素，进行处理的内容本身与Vertex Shader非常相似。</p>
@@ -190,8 +183,7 @@
 <p>　　图6中示范了把法线向量放入到纹理的[normal map]以实现凹凸贴图(bump map)的例子。这个因为在后面的连载会详细解说，在这里只用了解[Pixel Shader的工作是这样的感觉]就行了。</p>
 <p><img src="http://dl2.iteye.com/upload/attachment/0085/2390/0ebe3f85-1f45-3eb6-8054-b35dcfe483ac.jpg" alt="img"></p>
 <p> Pixel Shader的工作图例，完成凹凸贴图流程的概念图。从heightmap到normal map变换在Pixel Shader进行。法线贴图存放了法线向量，每1个texel对应1个XYZ表示的三维法线向量值(也有存放XY，计算求出Z的方法)。</p>
-<p><strong>## 八：渲染的后端</strong></p>
-<p>Pixel Shader的输出，简单的说就是[场景中构成多边形的像素，会在这里确定最终的颜色]，虽然可以想象就是按原样向显存里写入[Pixel的绘制处理完成了]，但还有一些工作要做。</p>
+<h2 id="八：渲染的后端"><a href="#八：渲染的后端" class="headerlink" title="八：渲染的后端"></a>八：渲染的后端</h2><p>Pixel Shader的输出，简单的说就是[场景中构成多边形的像素，会在这里确定最终的颜色]，虽然可以想象就是按原样向显存里写入[Pixel的绘制处理完成了]，但还有一些工作要做。</p>
 <p>　　那个就是[10]的Render BackEnd，另外NVIDIA称呼这个部分为ROP Unit。ROP Unit到底是Rendering Output Pipeline还是Raster Operation的简称并不是太清楚，在本连载中将前者作为正确的解释。</p>
 <p>　　尽管如此，这里是做Pixel Shader输出时[是不是可以写入的验证]，以及写入时[决定如何写入]等，这些是向显存写入的控制部分。Pixel Shader自己可以从纹理中读取，但不能直接向显存写入，所</p>
 <p>　　以这个处理也成为极为重要的部分。</p>
@@ -227,7 +219,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/06/%E8%A5%BF%E5%B7%9D%E5%96%84%E5%8F%B83D%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5%E5%92%8C%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E7%9A%84%E5%A4%84%E7%90%86/" data-id="ckes8xhy00000c8vrgetvbzxp" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/06/%E8%A5%BF%E5%B7%9D%E5%96%84%E5%8F%B83D%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5%E5%92%8C%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E7%9A%84%E5%A4%84%E7%90%86/" data-id="ckes9q84r00015svr7nth3mw0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Computer-Graphics/" rel="tag">Computer Graphics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DirectX/" rel="tag">DirectX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Graphics-Pipeline/" rel="tag">Graphics Pipeline</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGl/" rel="tag">OpenGl</a></li></ul>
