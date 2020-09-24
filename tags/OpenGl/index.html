@@ -46,7 +46,7 @@
     
     <title>
         
-            Tag: OpenGl | 
+            Tag: OpenGL | 
         
         ZEILAO的茶屋
     </title>
@@ -218,7 +218,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="ZEILAO的茶屋">
-    <meta name="msapplication-starturl" content="http://example.com/tags/OpenGl/">
+    <meta name="msapplication-starturl" content="http://example.com/tags/OpenGL/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="ZEILAO的茶屋">
@@ -233,9 +233,9 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://example.com/tags/OpenGl/">
+    <meta property="og:url" content="http://example.com/tags/OpenGL/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Tag: OpenGl | ZEILAO的茶屋">
+    <meta property="og:title" content="Tag: OpenGL | ZEILAO的茶屋">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="">
     
@@ -247,7 +247,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://example.com/tags/OpenGl/index.html" />
+        <link rel="canonical" href="http://example.com/tags/OpenGL/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -310,21 +310,17 @@
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2020/09/06/%E8%A5%BF%E5%B7%9D%E5%96%84%E5%8F%B83D%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5%E5%92%8C%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E7%9A%84%E5%A4%84%E7%90%86/">西川善司3D图形技术概念和渲染管线的处理</a></p>
+        <p class="article-headline-p"><a href="/2020/09/24/OpenGL-s-Camera/">OpenGL&#39;s Camera</a></p>
     </div>
 
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            作者：trace校对&amp;注解：千里马肝来源：OpenGPU
-3D图形技术概念和渲染管线的处理一：3D图形的概念3D图形管线的流程图
-图1是3D图形的流程模型。这个虽然是对应DirectX 10/SM4的GPU流程模型，不过部分流程会根据GPU的不同，有时会有更细致的处理，有时也会做一些简略，这点敬请谅解。
-　　首先，介绍一下3D图形的处理为什么会变成这样的根本原因。会变成这个样子，是由于在漫长又短暂的实时3D图形历史中，这个部分需要进行最顺畅 的处理，更重要的是因为这样设计GPU会更容易实现的原因。这个流程不管是在Direct3D还是在OpenGL里都没有太大的差异。
-
+            OpenGL本身没有Camera这一概念，但我们可以自行假想一个Camera。
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2020/09/06/%E8%A5%BF%E5%B7%9D%E5%96%84%E5%8F%B83D%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5%E5%92%8C%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E7%9A%84%E5%A4%84%E7%90%86/" target="_self">Read more</a>
+            <a href="/2020/09/24/OpenGL-s-Camera/" target="_self">Read more</a>
         </span>
     </div>
     <!-- Post_entry Info-->
@@ -336,7 +332,7 @@
             </div>
             <div>
                 <strong>ZEILAO_0</strong>
-                <span>Sep 06, 2020</span>
+                <span>Sep 24, 2020</span>
             </div>
         </div>
         <div id="post_entry-right-info">
@@ -457,7 +453,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2020/09/">September 2020<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/archives/2020/09/">September 2020<span class="sidebar_archives-count">3</span></a>
             </ul>
         </li>
         
@@ -717,6 +713,32 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <script>
     var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 0000;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
+r();
     var textContent = document.querySelector('span[year]')
 
     copyrightSince = 0000;
