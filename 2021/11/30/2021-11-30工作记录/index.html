@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Tue Nov 30 2021 18:29:58 GMT+0800">
-        <meta property="article:modified_time" content="Tue Nov 30 2021 18:35:48 GMT+0800">
+        <meta property="article:modified_time" content="Tue Nov 30 2021 18:51:52 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "http://example.com/2021/11/30/2021-11-30%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/index.html",
     "headline": "2021-11-30工作记录",
     "datePublished": "Tue Nov 30 2021 18:29:58 GMT+0800",
-    "dateModified": "Tue Nov 30 2021 18:35:48 GMT+0800",
+    "dateModified": "Tue Nov 30 2021 18:51:52 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "ZEILAO_o",
@@ -550,7 +550,7 @@
 <li>然后使用卷积网络对这些特征平面进行处理，并通过另一个浅层全连通网络将其解码为占用概率。</li>
 </ol>
 <p>图1说明了所提出的方法的总体工作流程</p>
-<p><img src="/2021-11-30%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/image-20211130183325361.png" alt="image-20211130183325361"></p>
+<p><img src="/2021/11/30/2021-11-30%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/image-20211130183325361.png" alt="image-20211130183325361"></p>
 <p>Figure 1: Dynamic Plane Convolutional Occupancy Networks pipeline</p>
 <p>通过ResNet PointNet[30]将N个输入点云编码为每个点的特征，其中D为特征维度。同时，浅平面预测器网络从输入点云中学习动态平面和特定于平面的特征。我们将特定于平面的特征与相对于各个动态平面的所有编码的逐点特征相加。接下来，将汇总的特征投影到动态平面。然后使用具有平面间共享权重的U-Net[32]来处理投影的平面特征。在解码阶段，根据查询到的局部平面特征，利用浅层全连通网络对均匀采样点p的占有率进行预测</p>
 <h4 id="结论："><a href="#结论：" class="headerlink" title="结论："></a>结论：</h4><p>提出学习动态平面来形成信息特征。</p>
