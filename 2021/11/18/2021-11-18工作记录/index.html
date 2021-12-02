@@ -475,7 +475,9 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>工作记录<br><a id="more"></a></p>
+        <p>工作记录</p>
+<a id="more"></a>
+
 <ul>
 <li>数值分析2014年试卷</li>
 <li>leetcode一道题</li>
@@ -487,31 +489,15 @@
 <p>若$f(x)$在$[a,b]$上存在$n$阶导数，且节点$x_0,x_1,\dots,x_n \in [a,b]$，则n阶均差与导数的关系为</p>
 </li>
 </ul>
-<script type="math/tex; mode=display">
-f[x_0,x_1,\dots,x_n]=\frac{f^{(n)}(x)}{n!},\ \xi \in [a,b]</script><ul>
-<li><p>插值逼近中，切比雪夫多项式的例题P63例题3中为何是$ = \frac{1}{2}T_3(x)$的理由在定理6说明了$\widetilde{T}_3(x)$是所有系数为1的三次多项式中最大值最小的，也就是说$f(x)-P^<em>_2(x)$的偏差最小的三次多项式<em>*余项</em></em>一定是关于$\widetilde T_3(x)$乘以某一个常数得来的，这就是在那个剩下的三次项相同系数下偏差最小的多项式。</p>
+<p>$$<br>f[x_0,x_1,\dots,x_n]=\frac{f^{(n)}(x)}{n!},\ \xi \in [a,b]<br>$$</p>
+<ul>
+<li><p>插值逼近中，切比雪夫多项式的例题P63例题3中为何是$ = \frac{1}{2}T_3(x)$的理由在定理6说明了$\widetilde{T}_3(x)$是所有系数为1的三次多项式中最大值最小的，也就是说$f(x)-P^*_2(x)$的偏差最小的三次多项式<strong>余项</strong>一定是关于$\widetilde T_3(x)$乘以某一个常数得来的，这就是在那个剩下的三次项相同系数下偏差最小的多项式。</p>
 </li>
 <li><p>14年最后一道大题</p>
 <p>对任意的正数$a$，应用牛顿法于方程$f(x)=x^2-a=0$可导出求$\sqrt{a}$的迭代公式$x_{k+1} = \frac{1}{2}(x_k+\frac{a}{x_k})$，证明此迭代公式对任意$x_0 &gt; 0$收敛。</p>
 <blockquote>
-<p>解 </p>
-<script type="math/tex; mode=display">
-\begin{align}
-& x_{k+1} - \sqrt a = \frac{1}{2x_k}(x_k - \sqrt a)^2 \tag{1}\\
-& x_{k+1} + \sqrt a = \frac{1}{2x_k}(x_k + \sqrt a)^2 \tag{2}\\
-& \Rightarrow \frac{x_{k+1} - \sqrt a}{x_{k+1} + \sqrt a}
-=( \frac{x_k - \sqrt a}{x_k + \sqrt a} )^2 \tag{3}\\
-& \frac{x_{k+1} - \sqrt a}{x_{k+1} + \sqrt a} 
-= ( \frac{x_0 - \sqrt a}{x_0 + \sqrt a} )^{2^k} \tag{4}\\
-& 记: q = \frac{x_0 - \sqrt a}{x_0 + \sqrt a} 代入(4)\\
-& x_k - \sqrt a = q^{2^k}(x_k + \sqrt a) \\
-& \Rightarrow x_k - q^{2^k}x_k - \sqrt a + q^{2^k}\sqrt a
-= 2\sqrt a q^{2^k}\\
-& \Rightarrow (1 - q^{2^k})(x_k - \sqrt a) = 2\sqrt a q^{2^k} \\
-& \Rightarrow x_k - \sqrt a = 2\sqrt a \frac{q^{2^k}}{1 - q^{2^k}} \\
-&此时对于\forall x_0 > 0. 总有|q| < 1 \\
-& \therefore 当k \to \infty, x_k \to \sqrt a 。即迭代公式收敛
-\end{align}</script></blockquote>
+<p>解<br>$$<br>\begin{align}<br>&amp; x_{k+1} - \sqrt a = \frac{1}{2x_k}(x_k - \sqrt a)^2 \tag{1}\<br>&amp; x_{k+1} + \sqrt a = \frac{1}{2x_k}(x_k + \sqrt a)^2 \tag{2}\<br>&amp; \Rightarrow \frac{x_{k+1} - \sqrt a}{x_{k+1} + \sqrt a}<br>=( \frac{x_k - \sqrt a}{x_k + \sqrt a} )^2 \tag{3}\<br>&amp; \frac{x_{k+1} - \sqrt a}{x_{k+1} + \sqrt a}<br>= ( \frac{x_0 - \sqrt a}{x_0 + \sqrt a} )^{2^k} \tag{4}\<br>&amp; 记: q = \frac{x_0 - \sqrt a}{x_0 + \sqrt a} 代入(4)\<br>&amp; x_k - \sqrt a = q^{2^k}(x_k + \sqrt a) \<br>&amp; \Rightarrow x_k - q^{2^k}x_k - \sqrt a + q^{2^k}\sqrt a<br>= 2\sqrt a q^{2^k}\<br>&amp; \Rightarrow (1 - q^{2^k})(x_k - \sqrt a) = 2\sqrt a q^{2^k} \<br>&amp; \Rightarrow x_k - \sqrt a = 2\sqrt a \frac{q^{2^k}}{1 - q^{2^k}} \<br>&amp;此时对于\forall x_0 &gt; 0. 总有|q| &lt; 1 \<br>&amp; \therefore 当k \to \infty, x_k \to \sqrt a 。即迭代公式收敛<br>\end{align}<br>$$</p>
+</blockquote>
 </li>
 </ul>
 
@@ -640,7 +626,7 @@ f[x_0,x_1,\dots,x_n]=\frac{f^{(n)}(x)}{n!},\ \xi \in [a,b]</script><ul>
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2021/11/">十一月 2021<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/09/">九月 2020<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/archives/2021/12/">十二月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/11/">十一月 2021<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/09/">九月 2020<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         

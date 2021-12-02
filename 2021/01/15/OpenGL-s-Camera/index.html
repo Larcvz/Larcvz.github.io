@@ -493,19 +493,21 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="摄像机"><a href="#摄像机" class="headerlink" title="摄像机"></a>摄像机</h2><p>OpenGL本身没有Camera这一概念，但我们可以自行假想一个Camera。<br><a id="more"></a><br>通过把场景中的物体往Camera移动方向相反的方向移动，来让我们产生一种是Camera在移动的感觉。</p>
+        <h2 id="摄像机"><a href="#摄像机" class="headerlink" title="摄像机"></a>摄像机</h2><p>OpenGL本身没有Camera这一概念，但我们可以自行假想一个Camera。</p>
+<a id="more"></a>
+<p>通过把场景中的物体往Camera移动方向相反的方向移动，来让我们产生一种是Camera在移动的感觉。</p>
 <h2 id="摄像机-观察空间"><a href="#摄像机-观察空间" class="headerlink" title="摄像机/观察空间"></a>摄像机/观察空间</h2><p>摄像机/观察空间(Camera/View Space)，是以摄像机的视角作为场景原点时场景中所有的顶点坐标：将世界坐标系转换为以摄像机的位置和方向的观察坐标。</p>
 <p>因此我们需要知道一个摄像机在世界空间中的位置、观察的方向、一个指向它右侧的向量以及一个指向它上方的向量。（创建了一个以摄像机的位置为原点，三个方向相互垂直的坐标系）</p>
 <p><img src="https://learnopengl-cn.github.io/img/01/09/camera_axes.png" alt="camera_axes"></p>
 <h3 id="1-摄像机位置"><a href="#1-摄像机位置" class="headerlink" title="1.摄像机位置"></a>1.摄像机位置</h3><p>摄像机的位置就是世界空间中的一个位置向量。</p>
-<pre><code class="lang-C++">glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+<pre><code class="C++">glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
 </code></pre>
 <blockquote>
 <p>不要忘记正z轴是从屏幕指向你的，如果我们希望摄像机向后移动，我们就沿着z轴的正方向移动。</p>
 <p>（OpenGL的坐标系中z轴的正方向是从屏幕指向你的，不同的坐标系方向不一定一样）</p>
 </blockquote>
 <h3 id="2-摄像机方向"><a href="#2-摄像机方向" class="headerlink" title="2. 摄像机方向"></a>2. 摄像机方向</h3><p>知道摄像机的位置后，还需要知道摄像机镜头所指向的方向。<br>先假设摄像机指向的是场景原点：(0, 0, 0)。用场景原点向量减去摄像机位置向量的结果就是摄像机的指向向量。看上图可知摄像机指向z轴负方向，但希望方向向量(Direction Vector)指向摄像机的z轴正方向。如果我们交换相减的顺序，就能获得一个指向摄像机正z轴方向的向量：</p>
-<pre><code class="lang-C++">glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
+<pre><code class="C++">glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
 glm::vec3 cameraDirection = glm::normalize(cameraPos - cameraTarget);
 </code></pre>
 <blockquote>
@@ -518,42 +520,24 @@ glm::vec3 cameraDirection = glm::normalize(cameraPos - cameraTarget);
 <li>把上向量与摄像机的方向向量进行叉乘。</li>
 </ol>
 <p>叉乘结果会同时垂直与两个向量，因此我们会得到指向x轴正方向的那个向量（ <u>如果交换两个向量叉乘的顺序就会得到相反的指向x轴负方向的向量</u> ）</p>
-<pre><code class="lang-C++">glm::vec3 up = glm::vec3(0.0f, 0.1f, 0.0f);
+<pre><code class="C++">glm::vec3 up = glm::vec3(0.0f, 0.1f, 0.0f);
 glm::vec3 cameraRight = glm::normalize(glm::cross(up,cameraDirection));
 </code></pre>
 <h3 id="4-上轴"><a href="#4-上轴" class="headerlink" title="4. 上轴"></a>4. 上轴</h3><p>在有了x轴向量和z轴向量后，只需要把方向向量和右向量进行叉乘就能获得摄像机正y轴向量：</p>
-<pre><code class="lang-C++">glm::vec3 cameraUp = glm::cross(cameraDirection,cameraRight);
+<pre><code class="C++">glm::vec3 cameraUp = glm::cross(cameraDirection,cameraRight);
 </code></pre>
 <blockquote>
-<p>对于想学到更多数学原理的读者，提示一下，在线性代数中这个处理叫做<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Gram–Schmidt_process">格拉姆—施密特正交化</a>(Gram-Schmidt Process)。</p>
+<p>对于想学到更多数学原理的读者，提示一下，在线性代数中这个处理叫做<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process">格拉姆—施密特正交化</a>(Gram-Schmidt Process)。</p>
 </blockquote>
 <p>使用这些摄像机向量我们就可以创建一个LookAt矩阵了，它在创建摄像机的时候非常有用。</p>
-<h2 id="Look-At"><a href="#Look-At" class="headerlink" title="Look At"></a>Look At</h2><p>现在我们有了3个相互垂直的轴和一个定义摄像机空间的位置坐标，我们可以创建我们自己的LookAt矩阵了：</p>
-<script type="math/tex; mode=display">
-LookAt=
-\left[
-\begin{matrix}
-\color{red}R_x&\color{red}R_y&\color{red}R_z&0
-\\\color{green}U_x&\color{green}U_y&\color{green}Uz&0
-\\\color{blue}D_x&\color{blue}D_y&\color{blue}D_z&0
-\\0&0&0&1
-\end{matrix}
-\right]
-*
-\left[
-\begin{matrix}
-1&0&0&-\color{purple}P_x
-\\0&1&0&-\color{purple}P_y
-\\0&0&1&-\color{purple}P_z
-\\0&0&0&1
-\end{matrix}
-\right]</script><p>其中$\color{red}R$是右向量，$\color{green}U$是上向量，$\color{blue}D$是方向向量$\color{purple}P$是摄像机位置向量。</p>
+<h2 id="Look-At"><a href="#Look-At" class="headerlink" title="Look At"></a>Look At</h2><p>现在我们有了3个相互垂直的轴和一个定义摄像机空间的位置坐标，我们可以创建我们自己的LookAt矩阵了：<br>$$<br>LookAt=<br>\left[<br>\begin{matrix}<br>\color{red}R_x&amp;\color{red}R_y&amp;\color{red}R_z&amp;0<br>\\color{green}U_x&amp;\color{green}U_y&amp;\color{green}Uz&amp;0<br>\\color{blue}D_x&amp;\color{blue}D_y&amp;\color{blue}D_z&amp;0<br>\0&amp;0&amp;0&amp;1<br>\end{matrix}<br>\right]<br>*<br>\left[<br>\begin{matrix}<br>1&amp;0&amp;0&amp;-\color{purple}P_x<br>\0&amp;1&amp;0&amp;-\color{purple}P_y<br>\0&amp;0&amp;1&amp;-\color{purple}P_z<br>\0&amp;0&amp;0&amp;1<br>\end{matrix}<br>\right]<br>$$</p>
+<p>其中$\color{red}R$是右向量，$\color{green}U$是上向量，$\color{blue}D$是方向向量$\color{purple}P$是摄像机位置向量。</p>
 <blockquote>
 <p>注意，位置向量是相反的，因为我们最终希望把世界平移到与我们自身移动的相反方向。</p>
 </blockquote>
 <p>LookAt矩阵作为观察矩阵可以很高效地把所有世界坐标变换到刚刚定义的观察空间。</p>
 <p>GLM已经提供了这些支持。我们要做的只是定义一个摄像机位置，一个目标位置和一个表示世界空间中的上向量的向量（我们计算右向量使用的那个上向量）。接着GLM就会创建一个LookAt矩阵，我们可以把它当作我们的观察矩阵：</p>
-<pre><code class="lang-C++">glm::mat4 view;
+<pre><code class="C++">glm::mat4 view;
 view = glm::lookAt(glm::vec3(0.0f, 0.0f, 3.0f), 
            glm::vec3(0.0f, 0.0f, 0.0f), 
            glm::vec3(0.0f, 1.0f, 0.0f));
@@ -685,7 +669,7 @@ view = glm::lookAt(glm::vec3(0.0f, 0.0f, 3.0f),
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2021/11/">十一月 2021<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/09/">九月 2020<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/archives/2021/12/">十二月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/11/">十一月 2021<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/09/">九月 2020<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
