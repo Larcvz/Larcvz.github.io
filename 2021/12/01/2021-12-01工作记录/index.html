@@ -485,7 +485,6 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h1 id="工作记录"><a href="#工作记录" class="headerlink" title="工作记录"></a>工作记录</h1><a id="more"></a>
-
 <ul>
 <li>刷了数值分析整理的历年题目</li>
 <li>看论文<ul>
@@ -494,8 +493,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="论文总结"><a href="#论文总结" class="headerlink" title="论文总结"></a>论文总结</h2><h3 id="DeepSDF-Learning-Continuous-Signed-Distance-Functions-for-Shape-Representation"><a href="#DeepSDF-Learning-Continuous-Signed-Distance-Functions-for-Shape-Representation" class="headerlink" title="DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation"></a>DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation</h3><h4 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h4><p><del>计算机图形学、3D计算机视觉和机器人社区已经产生了多种方法来表示3D几何图形以进行渲染和重建。它们提供了保真度、效率和压缩能力之间的权衡。</del><br>在这项工作中，我们引入了DeepSDF，这是一种学习的连续符号距离函数(SDF)表示，它可以从部分和噪声的3D输入数据中进行高质量的形状表示、插值和补全。</p>
-<p><del>与经典对应的一样，</del>DeepSDF通过连续的体积场表示形状的曲面：</p>
+<h2 id="论文总结"><a href="#论文总结" class="headerlink" title="论文总结"></a>论文总结</h2><h3 id="DeepSDF-Learning-Continuous-Signed-Distance-Functions-for-Shape-Representation"><a href="#DeepSDF-Learning-Continuous-Signed-Distance-Functions-for-Shape-Representation" class="headerlink" title="DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation"></a>DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation</h3><h4 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h4><p>~计算机图形学、3D计算机视觉和机器人社区已经产生了多种方法来表示3D几何图形以进行渲染和重建。它们提供了保真度、效率和压缩能力之间的权衡。~<br>在这项工作中，我们引入了DeepSDF，这是一种学习的连续符号距离函数(SDF)表示，它可以从部分和噪声的3D输入数据中进行高质量的形状表示、插值和补全。</p>
+<p>~与经典对应的一样，~DeepSDF通过连续的体积场表示形状的曲面：</p>
 <ul>
 <li><p>场中点的大小表示到曲面边界的距离，</p>
 </li>
@@ -535,7 +534,7 @@
 <blockquote>
 <p>辐射度radiance</p>
 </blockquote>
-<p><img src="/2021/12/01/2021-12-01%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/image-20211202140428648.png" alt="image-20211202140428648"></p>
+<p><img src="image-20211202140428648.png" alt="image-20211202140428648"></p>
 <p>图1：我们提出了一种从一组输入图像中优化场景的连续5D神经辐射场表示(任何连续位置的体积密度和视点相关的颜色)的方法。我们使用体绘制技术沿着光线积累场景表示的样本，以便从任何视点渲染场景。在这里，我们将在周围半球上随机捕获的100个合成鼓场景的输入视图集可视化，并且我们将从优化的NeRF表示中呈现两个新的视图。</p>
 <hr>
 <p>为了渲染该神经辐射场(来自特定视点的NeRF)，我们：</p>
@@ -545,7 +544,7 @@
 <li>使用经典的体积渲染技术将这些颜色和密度累积到2D图像中。</li>
 </ol>
 <p>因为这个过程是自然可微的，所以我们可以使用梯度下降来优化这个模型，通过最小化每个观测图像和从我们的表示中渲染的相应视图之间的误差来优化该模型。跨多个视图最小化该误差鼓励网络通过向包含真实底层场景内容的位置分配高体积密度和精确颜色来预测场景的相干模型。图2可视化了整个管道。</p>
-<p><img src="/2021/12/01/2021-12-01%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/image-20211202141740421.png" alt="image-20211202141740421"></p>
+<p><img src="image-20211202141740421.png" alt="image-20211202141740421"></p>
 <p>图2：概述了我们的神经辐射场场景表示和不同的渲染过程。</p>
 <ul>
 <li><p>我们通过沿相机光线采样5D坐标(位置和观察方向)(a)，</p>
@@ -578,9 +577,9 @@
 <h4 id="Neural-Radiance-Field-Scene-Representation"><a href="#Neural-Radiance-Field-Scene-Representation" class="headerlink" title="Neural Radiance Field Scene Representation:"></a>Neural Radiance Field Scene Representation:</h4><p>我们将连续场景表示为5D矢量值函数，其输入是3D位置$\mathbf{x}=(x，y，z)$和2D观察方向$(θ，φ)$，其输出是发射颜色$\mathbf{c}=(r，g，b)$和体密度$σ$。在实践中，我们将方向表示为三维笛卡尔单位矢量$ \rm \bf d$。我们用一个mlp网络$F_\Theta：(\mathbf{x}，\mathbf{d})→(\mathbf{c}，σ)$来近似这个连续的5D场景表示，并优化它的扫描$\Theta$以从每个输入5D坐标映射到其相应的体积密度和定向发射的颜色。</p>
 <p>我们通过将网络限制为仅预测体积密度$σ$作为位置$\bf x$的函数，同时允许预测RGB色$ \bf c$作为位置和观察方向的函数，来鼓励表示是多视图一致的。为此，MLP $F_\Theta$首先处理具有8个完全连接层的输入3D坐标$\bf x$(使用ReLU激活和每层256个通道)，并输出$σ$和256维特征向量。然后，该特征向量与相机光线的观察方向连接在一起，并传递到另一个完全连接的层(使用ReLU激活和128个通道)，该层输出依赖于视图的RGB颜色。</p>
 <p>参见图3，查看我们的方法如何使用输入查看方向来表示非朗伯效果(non-Lambertian effects)的示例。如图4所示，没有视图依赖(仅$\bf x$作为输入)训练的模型很难表示投射。</p>
-<p><img src="/2021/12/01/2021-12-01%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/image-20211202150206750.png" alt="image-20211202150206750"></p>
+<p><img src="image-20211202150206750.png" alt="image-20211202150206750"></p>
 <p>图3：与视图相关的发射辐射的可视化。我们的神经辐射场表示将RGB颜色输出为空间位置$\bf x$和观察方向$\bf d$的5D函数。在这里，我们在船舶场景的神经表示中可视化两个空间位置的示例方向颜色分布。在(A)和(B)中，我们显示了两个固定的3D点从两个不同的相机位置出现：一个在船舷(橙色插图)，另一个在水面(蓝色插图)。我们的方法预测了这两个三维点的镜面外观的变化，在(C)中，我们展示了这种行为是如何在整个观察方向的半球内连续泛化的。</p>
-<p><img src="/2021/12/01/2021-12-01%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/image-20211202150422206.png" alt="image-20211202150422206"></p>
+<p><img src="image-20211202150422206.png" alt="image-20211202150422206"></p>
 <p>图4：在这里，我们直观地看到我们的完整模型如何从表示依赖于视图的发射辐射以及通过高频位置编码传递我们的输入坐标中受益。删除视图从属关系可防止模型在推土机踏面上重新创建镜面反射。移除位置编码会极大地降低模型表示高频几何图形和纹理的能力，从而导致过度平滑的外观</p>
 <hr>
 <h4 id="4-使用辐射场进行体绘制"><a href="#4-使用辐射场进行体绘制" class="headerlink" title="4 使用辐射场进行体绘制:"></a>4 使用辐射场进行体绘制:</h4><p>我们的5D神经辐射场将场景表示为空间中任何一点的体密度和方向发射的辐射度。</p>
@@ -595,10 +594,21 @@
 <h5 id="5-1-位置编码"><a href="#5-1-位置编码" class="headerlink" title="5.1 位置编码"></a>5.1 位置编码</h5><p>我们发现，让网络$F_\Theta$直接在$xyzθφ$输入坐标上操作会导致渲染在表示颜色和几何的高频变化方面表现很差。</p>
 <p>这与Rahamanet等人[35]最近的工作是一致的。这表明深层网络偏向于学习低频函数。</p>
 <p>它们还表明，在将输入传递到网络之前，<strong>使用高频函数将输入映射到高维空间，可以更好地拟合包含高频变化的数据</strong>。</p>
-<p>我们在神经场景表示的背景下利用这些发现，并表明将$F_\Theta$重新表述为两个函数$F_\Theta=F’_\Theta◦γ$的组合，一个已学而另一个未学，显著提高了性能(参见图4和表2)。这里$γ$是从$\mathbb R$到高维空间$\mathbb R^{2L}$的映射，$F’_\Theta$仍然是简单的正则MLP。形式上，我们使用的编码函数是：<br>$$<br>\gamma(p)=(<br>\sin(2^0\pi p),cos(2^0\pi p),<br>\cdots,<br>\sin(2^{L-1}\pi p),cos(2^{L-1}\pi p)<br>)\tag{4}<br>$$<br>此函数$\gamma(·)$分别应用于$\bf x$中的三个坐标值(归一化为位于[−1，1])中的每一个和笛卡尔观察方向单位向量$\bf d$的三个分量(构造为位于[−1，1])。在我们的实验中，我们为$\gamma(\bf x)$设置$L=10$，为$γ(\bf d)$设置$L=4$。</p>
+<p>我们在神经场景表示的背景下利用这些发现，并表明将$F_\Theta$重新表述为两个函数$F_\Theta=F’_\Theta◦γ$的组合，一个已学而另一个未学，显著提高了性能(参见图4和表2)。这里$γ$是从$\mathbb R$到高维空间$\mathbb R^{2L}$的映射，$F’_\Theta$仍然是简单的正则MLP。形式上，我们使用的编码函数是：</p>
+<script type="math/tex; mode=display">
+\gamma(p)=(
+\sin(2^0\pi p),cos(2^0\pi p),
+\cdots,
+\sin(2^{L-1}\pi p),cos(2^{L-1}\pi p)
+)\tag{4}</script><p>此函数$\gamma(·)$分别应用于$\bf x$中的三个坐标值(归一化为位于[−1，1])中的每一个和笛卡尔观察方向单位向量$\bf d$的三个分量(构造为位于[−1，1])。在我们的实验中，我们为$\gamma(\bf x)$设置$L=10$，为$γ(\bf d)$设置$L=4$。</p>
 <p>在流行的Transformer架构[47]中使用了类似的映射，其中它被称为位置编码。<del>然而，Transformers将其用于不同的目标，即提供序列中令牌的离散位置作为不包含任何顺序概念的体系结构的输入。</del>相反，我们使用这些函数将连续输入坐标映射到更高维空间，使我们的MLP能够更容易地逼近更高频率的函数。关于从投影[51]建模3D蛋白质结构的相关问题的并行工作也利用类似的输入坐标映射。</p>
 <h5 id="5-2-分层体积采样："><a href="#5-2-分层体积采样：" class="headerlink" title="5.2 分层体积采样："></a>5.2 分层体积采样：</h5><p>我们沿着每个相机光线在N个查询点密集评估神经辐射场网络的渲染策略效率低下：对渲染图像没有贡献的自由空间和遮挡区域仍然被重复采样。我们从早期的体绘制工作[20]中得到了启发，并提出了一种分层表示法，通过将样本按其在最终渲染中的预期效果成比例地分配，从而提高了渲染效率。</p>
-<p>我们不再仅仅使用单个网络来表示场景，而是同时优化了两个网络：一个“粗略”，一个“精细”。我们首先使用分层抽样对一组NC位置进行抽样，并评估这些位置上的“粗略”网络，如等式2和3中所述。给出这个“粗略”网络的输出，然后我们沿着每条光线产生一个更有信息的点采样，其中样本偏向体积的相关部分。为此，我们首先在Eqn.3中重写来自粗略网络$\hat C_c(\bf r)$的Alpha合成颜色，作为沿射线的所有采样颜色$c_i$的加权和：<br>$$<br>\hat C_c(\mathbf r) =<br>\sum_{i=1}^{N_c}w_ic_i,\ \ \ \<br>w_i = T_i(1-\exp(-\sigma_i\delta_i))<br>\tag{5}<br>$$<br>将这些权重归一化为$\hat w_i=w_i/∑^{N_c}_{j=1}w_j$会沿着射线产生分段恒定的PDF。我们使用逆变换采样从该分布对第二组$N_f$位置进行采样，在第一组和第二组样本的并集处评估我们的“精细”网络，并使用公式3计算光线$\hat C_f(\bf r)$的最终渲染颜色。但使用所有$N_c+N_f$样品。</p>
+<p>我们不再仅仅使用单个网络来表示场景，而是同时优化了两个网络：一个“粗略”，一个“精细”。我们首先使用分层抽样对一组NC位置进行抽样，并评估这些位置上的“粗略”网络，如等式2和3中所述。给出这个“粗略”网络的输出，然后我们沿着每条光线产生一个更有信息的点采样，其中样本偏向体积的相关部分。为此，我们首先在Eqn.3中重写来自粗略网络$\hat C_c(\bf r)$的Alpha合成颜色，作为沿射线的所有采样颜色$c_i$的加权和：</p>
+<script type="math/tex; mode=display">
+\hat C_c(\mathbf r) = 
+\sum_{i=1}^{N_c}w_ic_i,\ \ \ \ 
+w_i = T_i(1-\exp(-\sigma_i\delta_i))
+\tag{5}</script><p>将这些权重归一化为$\hat w_i=w_i/∑^{N_c}_{j=1}w_j$会沿着射线产生分段恒定的PDF。我们使用逆变换采样从该分布对第二组$N_f$位置进行采样，在第一组和第二组样本的并集处评估我们的“精细”网络，并使用公式3计算光线$\hat C_f(\bf r)$的最终渲染颜色。但使用所有$N_c+N_f$样品。</p>
 <p>此过程将更多样本分配给我们预期包含可见内容的区域。这解决了与重要性抽样类似的目标，但我们使用采样值作为整个积分域的非均匀离散化，而不是将每个样本作为整个积分的独立概率估计。</p>
 <h5 id="5-3-实现细节："><a href="#5-3-实现细节：" class="headerlink" title="5.3 实现细节："></a>5.3 实现细节：</h5><p>单个场景的优化通常需要大约100-300k次迭代才能在单个NVIDIA V100 GPU上收敛(大约1-2天)</p>
 <blockquote>
@@ -745,7 +755,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2021/12/">十二月 2021<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/11/">十一月 2021<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/09/">九月 2020<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/archives/2021/12/">十二月 2021<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/11/">十一月 2021<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/09/">九月 2020<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
@@ -1078,6 +1088,21 @@ console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viose
 
                 </main>
             </div>
-        <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
     
 </html>

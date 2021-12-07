@@ -509,9 +509,7 @@
 <h1 id="3D图形技术概念和渲染管线的处理"><a href="#3D图形技术概念和渲染管线的处理" class="headerlink" title="3D图形技术概念和渲染管线的处理"></a>3D图形技术概念和渲染管线的处理</h1><h2 id="一：3D图形的概念"><a href="#一：3D图形的概念" class="headerlink" title="一：3D图形的概念"></a>一：3D图形的概念</h2><p><strong>3D图形管线的流程图</strong></p>
 <p>图1是3D图形的流程模型。这个虽然是对应DirectX 10/SM4的GPU流程模型，不过部分流程会根据GPU的不同，有时会有更细致的处理，有时也会做一些简略，这点敬请谅解。</p>
 <p>　　首先，介绍一下3D图形的处理为什么会变成这样的根本原因。会变成这个样子，是由于在漫长又短暂的实时3D图形历史中，这个部分需要进行最顺畅 的处理，更重要的是因为这样设计GPU会更容易实现的原因。这个流程不管是在Direct3D还是在OpenGL里都没有太大的差异。</p>
-<p><img src="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg" alt="点击查看原始大小图片"></p>
-<a id="more"></a>
-<p> GPU内部的渲染流程</p>
+<p><img src="http://dl2.iteye.com/upload/attachment/0085/2376/a55e0849-381f-3fc4-bc2d-bad3cb5f225f.jpg" alt="点击查看原始大小图片"><br><a id="more"></a><br> GPU内部的渲染流程</p>
 <p>　  <strong>CPU负责的3D图形处理部分 = 游戏引擎?</strong></p>
 <p>　　图1的[1]和[2]的部分，主要是在CPU里进行的处理。</p>
 <p>　　配置3D物体或是移动后再设置，因为这两种很类似，所以把这些在系统中处理的部分全部称作[游戏引擎]。</p>
@@ -736,7 +734,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2021/12/">十二月 2021<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/11/">十一月 2021<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/09/">九月 2020<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/archives/2021/12/">十二月 2021<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/11/">十一月 2021<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/09/">九月 2020<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
@@ -1049,6 +1047,21 @@ console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viose
 
                 </main>
             </div>
-        <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
     
 </html>

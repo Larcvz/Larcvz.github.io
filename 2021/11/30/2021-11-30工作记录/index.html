@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Tue Nov 30 2021 18:29:58 GMT+0800">
-        <meta property="article:modified_time" content="Tue Nov 30 2021 18:51:52 GMT+0800">
+        <meta property="article:modified_time" content="Tue Dec 07 2021 16:46:44 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "http://example.com/2021/11/30/2021-11-30%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/index.html",
     "headline": "2021-11-30工作记录",
     "datePublished": "Tue Nov 30 2021 18:29:58 GMT+0800",
-    "dateModified": "Tue Nov 30 2021 18:51:52 GMT+0800",
+    "dateModified": "Tue Dec 07 2021 16:46:44 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "ZEILAO_o",
@@ -485,7 +485,6 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h1 id="工作记录"><a href="#工作记录" class="headerlink" title="工作记录"></a>工作记录</h1><a id="more"></a>
-
 <p>看论文：</p>
 <ul>
 <li>Stefan Lionar, Daniil Emtsev, Dusan Svilarkovic, &amp; Songyou Peng (2020). Dynamic Plane Convolutional Occupancy Networks.. <em>arXiv: Computer Vision and Pattern Recognition</em>.</li>
@@ -529,18 +528,16 @@
 </li>
 </ul>
 <h4 id="相关工作："><a href="#相关工作：" class="headerlink" title="相关工作："></a>相关工作：</h4><ul>
-<li><p>体素表示：体素可能是三维重建中使用最广泛的表示[6，36，39]，但由于其大的内存消耗，在分辨率方面受到限制。为了缓解这一问题，一些工作考虑了多尺度方案或八叉树来进行有效的空间划分[11，16，22]。即使进行了这些修改，这些方法仍然受到计算和内存的限制</p>
-</li>
+<li>体素表示：体素可能是三维重建中使用最广泛的表示[6，36，39]，但由于其大的内存消耗，在分辨率方面受到限制。为了缓解这一问题，一些工作考虑了多尺度方案或八叉树来进行有效的空间划分[11，16，22]。即使进行了这些修改，这些方法仍然受到计算和内存的限制</li>
 <li><p>点云表示：点云在机器人或计算机图形学中都有广泛的应用[12，30，31]。但是，点之间不存在拓扑关系，因此需要额外的后处理步骤[8，10]。</p>
 <ul>
 <li>一些学者还提出了基于学习的点云卷积运算来刻画点之间的关系，类似于卷积神经网络中图像像素的二维卷积[19，29，34，38]。与我们编码点云表示的方法类似，FP-Conv[19]使用学习的局部展平操作将点云中的要素聚合到2D网格上。</li>
-<li>同样，Point-Plane Net[29]引入了一种称为Plane Conv的点云卷积运算，它计算点之间的距离，并将它们聚集在一组学习的平面中。然而，这些方法都没有考虑到本文研究的重点–<strong>曲面重建问题</strong>。</li>
+<li>同样，Point-Plane Net[29]引入了一种称为Plane Conv的点云卷积运算，它计算点之间的距离，并将它们聚集在一组学习的平面中。然而，这些方法都没有考虑到本文研究的重点—<strong>曲面重建问题</strong>。</li>
 </ul>
 </li>
 <li><p>网格表示：网格[14，15，18]通过构建顶点和面来强调拓扑关系，但是基于网格的方法难以生成具有简单拓扑或自交网格的形状</p>
 </li>
-<li><p>Implicit neural representation：最近，隐式空间[23]和符号距离场[27]被用于三维重建。与前述的显式表示相比，隐式表示可以以连续的方式建模形状。因此，从隐式表示可以获得更好的细节保持性和更复杂的形状拓扑学。最近的许多工作探索了各种应用，例如，仅从二维观测[20，21，25]学习隐式表示，编码纹理信息[24，26]，或学习梯度场[1]。遗憾的是，所有这些方法仍然局限于单个目标或具有有限复杂性的小场景的重建，并且难以将其推广到训练分布之外的场景。<br>值得注意的例外是彭等人。[28]。他们提出了一种架构，通过在合成的室内场景数据集上进行训练，并测试其对更大场景(如ScanNet[9]和MatterPort3D[3])的普适性，从而实现大规模的3D场景重建。具体地说，在给定点云的情况下，该方法将点特征投影到规范平面或体网格上，然后使用U-Net[32]来聚合局部和全局信息。通过这种方式，有效地利用了诱导偏向。然而，当某些对象部分与正则方向不能很好地对齐时，仅考虑正则平面可能会导致性能损失(例如，具有复杂几何形状的有线灯，请参见图4的第一行)。因此，我们建议用网络来学习平面。有了这样的动态学习平面，我们的系统显示出更好的三维重建质量。</p>
-</li>
+<li>Implicit neural representation：最近，隐式空间[23]和符号距离场[27]被用于三维重建。与前述的显式表示相比，隐式表示可以以连续的方式建模形状。因此，从隐式表示可以获得更好的细节保持性和更复杂的形状拓扑学。最近的许多工作探索了各种应用，例如，仅从二维观测[20，21，25]学习隐式表示，编码纹理信息[24，26]，或学习梯度场[1]。遗憾的是，所有这些方法仍然局限于单个目标或具有有限复杂性的小场景的重建，并且难以将其推广到训练分布之外的场景。<br>值得注意的例外是彭等人。[28]。他们提出了一种架构，通过在合成的室内场景数据集上进行训练，并测试其对更大场景(如ScanNet[9]和MatterPort3D[3])的普适性，从而实现大规模的3D场景重建。具体地说，在给定点云的情况下，该方法将点特征投影到规范平面或体网格上，然后使用U-Net[32]来聚合局部和全局信息。通过这种方式，有效地利用了诱导偏向。然而，当某些对象部分与正则方向不能很好地对齐时，仅考虑正则平面可能会导致性能损失(例如，具有复杂几何形状的有线灯，请参见图4的第一行)。因此，我们建议用网络来学习平面。有了这样的动态学习平面，我们的系统显示出更好的三维重建质量。</li>
 </ul>
 <h4 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h4><ul>
 <li>目标：是从嘈杂的点云中重建具有精细细节的3D场景</li>
@@ -550,7 +547,7 @@
 <li>然后使用卷积网络对这些特征平面进行处理，并通过另一个浅层全连通网络将其解码为占用概率。</li>
 </ol>
 <p>图1说明了所提出的方法的总体工作流程</p>
-<p><img src="/2021/11/30/2021-11-30%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/image-20211130183325361.png" alt="image-20211130183325361"></p>
+<p><img src="image-20211130183325361.png" alt="image-20211130183325361"></p>
 <p>Figure 1: Dynamic Plane Convolutional Occupancy Networks pipeline</p>
 <p>通过ResNet PointNet[30]将N个输入点云编码为每个点的特征，其中D为特征维度。同时，浅平面预测器网络从输入点云中学习动态平面和特定于平面的特征。我们将特定于平面的特征与相对于各个动态平面的所有编码的逐点特征相加。接下来，将汇总的特征投影到动态平面。然后使用具有平面间共享权重的U-Net[32]来处理投影的平面特征。在解码阶段，根据查询到的局部平面特征，利用浅层全连通网络对均匀采样点p的占有率进行预测</p>
 <h4 id="结论："><a href="#结论：" class="headerlink" title="结论："></a>结论：</h4><p>提出学习动态平面来形成信息特征。</p>
@@ -686,7 +683,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2021/12/">十二月 2021<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/11/">十一月 2021<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/09/">九月 2020<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/archives/2021/12/">十二月 2021<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/11/">十一月 2021<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/09/">九月 2020<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
@@ -951,26 +948,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- MathJax Load-->
 
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
-        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
-        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
-        messageStyle: "none"
-    });
-</script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
-
 
 <!-- Bing Background -->
 
@@ -1019,6 +996,21 @@ console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viose
 
                 </main>
             </div>
-        <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
     
 </html>
