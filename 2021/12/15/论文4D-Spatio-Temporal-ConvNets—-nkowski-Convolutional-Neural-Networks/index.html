@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Wed Dec 15 2021 14:07:14 GMT+0800">
-        <meta property="article:modified_time" content="Thu Dec 16 2021 16:58:34 GMT+0800">
+        <meta property="article:modified_time" content="Tue Dec 21 2021 14:56:05 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "http://example.com/2021/12/15/%E8%AE%BA%E6%96%874D-Spatio-Temporal-ConvNets%E2%80%94-nkowski-Convolutional-Neural-Networks/index.html",
     "headline": "论文4D Spatio-Temporal ConvNets—--nkowski Convolutional Neural Networks",
     "datePublished": "Wed Dec 15 2021 14:07:14 GMT+0800",
-    "dateModified": "Thu Dec 16 2021 16:58:34 GMT+0800",
+    "dateModified": "Tue Dec 21 2021 14:56:05 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "ZEILAO_o",
@@ -349,7 +349,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-%E7%A8%80%E7%96%8F%E5%BC%A0%E9%87%8F%E5%92%8C%E5%8D%B7%E7%A7%AF"><span class="post-toc-number">1.</span> <span class="post-toc-text">3. 稀疏张量和卷积</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-1-%E5%B9%BF%E4%B9%89%E7%A8%80%E7%96%8F%E5%8D%B7%E7%A7%AF"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">3.1 广义稀疏卷积</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-Minkowski-Engine"><span class="post-toc-number">2.</span> <span class="post-toc-text">4 Minkowski Engine</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-1-%E7%A8%80%E7%96%8F%E5%BC%A0%E9%87%8F%E7%9A%84%E9%87%8F%E5%8C%96"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">4.1 稀疏张量的量化</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%91%98%E8%A6%81%EF%BC%9A"><span class="post-toc-number">1.</span> <span class="post-toc-text">摘要：</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-Introduction"><span class="post-toc-number">2.</span> <span class="post-toc-text">1. Introduction</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="post-toc-number">3.</span> <span class="post-toc-text">2. 相关工作</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-%E7%A8%80%E7%96%8F%E5%BC%A0%E9%87%8F%E5%92%8C%E5%8D%B7%E7%A7%AF"><span class="post-toc-number">4.</span> <span class="post-toc-text">3. 稀疏张量和卷积</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-1-%E5%B9%BF%E4%B9%89%E7%A8%80%E7%96%8F%E5%8D%B7%E7%A7%AF"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">3.1 广义稀疏卷积</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-Minkowski-Engine"><span class="post-toc-number">5.</span> <span class="post-toc-text">4 Minkowski Engine</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-1-%E7%A8%80%E7%96%8F%E5%BC%A0%E9%87%8F%E7%9A%84%E9%87%8F%E5%8C%96"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">4.1 稀疏张量的量化</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -486,8 +486,36 @@
     
         <p>Christopher Choy et al. “4D Spatio-Temporal ConvNets: Minkowski Convolutional Neural Networks” <em>Computer Vision and Pattern Recognition</em> (2019).</p>
 <a id="more"></a>
-<p>因为需要用到稀疏张量的运算库所以将对论文中关于稀疏张量和稀疏卷积的内容做总结</p>
+<p>因为需要用到稀疏张量的运算库所以将对论文中关于稀疏张量和稀疏卷积的内容做总结，其他部分只是用了机翻而已。</p>
 <hr>
+<h1 id="摘要："><a href="#摘要：" class="headerlink" title="摘要："></a>摘要：</h1><p>在许多机器人和VR/AR应用中，3D视频是容易获得的输入源(深度图像序列或LIDAR扫描)。然而，在许多情况下，3D视频是通过2D或3D感知算法逐帧处理的。在这项工作中，我们提出了时空感知的四维卷积神经网络，它可以利用高维卷积直接处理这类3D视频。为此，我们采用稀疏张量[8，9]，并提出了包含所有离散卷积的广义稀疏二次卷积。为了实现广义稀疏卷积，我们创建了一个开源的稀疏张量自微分库<sup><a href="#fn_1" id="reffn_1">1</a></sup>，它为高维卷积神经网络提供了广泛的功能。我们利用该库构建了4D时空卷积神经网络，并在各种3D语义分割基准上对其进行了验证，提出了用于3D视频感知的4D数据集。为了克服4D空间中的挑战，我们提出了混合核(广义稀疏卷积的特例)和三边平稳条件随机场，以增强7D时空色度空间的时空一致性。实验表明，仅采用广义3D稀疏卷积的卷积神经网络的性能比2D或2D-3D混合方法有较大幅度的提高<sup><a href="#fn_2" id="reffn_2">2</a></sup>。此外，在3D视频上，4D时空卷积神经网络对噪声具有较强的鲁棒性，性能优于3D卷积神经网络。</p>
+<blockquote id="fn_2">
+<sup>2</sup>. 在提交时，我们在Scan-Net[5]上取得了最好的性能，67.9%的mIoU<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h1><p>在这项工作中，我们对3D视频感知感兴趣。3D视频是3D扫描的时间序列，例如来自深度相机的视频、LIDAR扫描序列或同一对象或身体部分的多次MRI扫描(图1)。</p>
+<p><img src="image-20211221142103405.png" alt="image-20211221142103405"></p>
+<p><code>Figure 1: An example of 3D video: 3D scenes at different time steps. Best viewed on display.</code></p>
+<p>随着激光雷达扫描仪和深度相机变得更加实惠和广泛用于机器人应用，3D-VIDO成为机器人系统或AR/VR应用的现成输入源。</p>
+<p><img src="image-20211221142408599.png" alt="image-20211221142408599"></p>
+<p>图2：超立方体在不同维度的2D投影</p>
+<p>然而，在使用3D视频进行高级感知任务方面存在许多技术挑战。首先，3D数据需要异构的表示和处理，这要么会疏远用户，要么会使其难以集成到更大的系统中。第二，三维卷积神经网络的性能比二维卷积神经网络差或相当。第三，用于快速大规模3D数据的开源存储库数量有限是另一个因素。</p>
+<p>为了解决高维感知中的大部分(如果不是全部)挑战，我们采用了稀疏张量[8，9]来解决我们的问题，提出了稀疏张量的广义稀疏卷积，并发布了一个开源的具有全面标准神经网络函数的稀疏张量自动差异库。</p>
+<p>我们采用稀疏表示有几个原因。目前，3D感知有多种并行工作：密集3D卷积[5]、点网变量[23，24]、连续卷积[12，16]、曲面卷积[21，30]和八叉树卷积[25]。在这些表示中，我们选择了一个稀疏张量，因为它对于高维空间具有表现性和泛化能力。此外，它还允许在传统神经网络库中进行同质数据表示，因为它们中的大多数都支持稀疏张量。</p>
+<p>其次，稀疏卷积与标准卷积(SEC.3)其在2D感知和3D重建[4]、特征学习[34]和语义分割[5]方面被证明是成功的。由于广义稀疏卷积是标准2D卷积的直接高维扩展，我们可以重新利用所有的体系结构创新，例如剩余连接、批归一化和许多其他，而对于高维问题几乎不需要修改。</p>
+<p>第三，稀疏卷积效率高、速度快。它只计算预定义坐标的输出，并将其保存到紧凑稀疏张量(第三章)。它既节省了内存，又节省了计算，特别是对于3D扫描或高维数据，因为那里的大部分空间都是空的。</p>
+<p>利用提出的库，我们创建了第一个大规模的3D/4D网络<sup><sup><a href="#fn_3" id="reffn_3">3</a></sup></sup>，并以物理学中的时空连续体Minkowski空间命名为Minkowski网络。</p>
+<p>然而，即使有了有效的表示，由于维数灾难，仅将3D卷积缩放到高维空间也会导致显著的计算开销和内存消耗。核大小为5的2D卷积需要$5^2$=25权重，在3D中权重指数增加到$5^3=125$，在4D中权重增加到625(图2)。然而，这种指数级的增长并不一定会带来更好的性能，还会显著降低网络速度。为了克服这一挑战，我们提出了非(超)立方形状的自定义内核。</p>
+<p>最后，4D时空预测在整个空间和时间上不一定是一致的。为了加强一致性，我们提出了在7D三角形空间(时空-时间-颜色)中定义的条件随机场，并给出了一个静态一致性函数。我们使用变分推理将条件随机场转换成可微分的复现层，它可以作为一个7D的Minkowskinwork来实现，并且可以端到端地训练4D和7D网络。</p>
+<p>实验上，我们使用各种3D基准，涵盖室内[5，2]和室外[28，26]。首先，我们展示了没有2D卷积神经网络的纯3D方法可以比2D或混合深度学习算法有更大的优势。<sup><a href="#fn_4" id="reffn_4">4</a></sup>此外，我们从Synthia[28]和VarCity[26]创建了4D数据集，并报告了时间分量的消融研究。</p>
+<h1 id="2-相关工作"><a href="#2-相关工作" class="headerlink" title="2. 相关工作"></a>2. 相关工作</h1><p>4D时空感知基本上需要3D感知，因为沿时间维度的4D切片是3D扫描。但是，由于目前还没有使用神经网络进行4d感知的先期工作，所以我们将主要讨论3d感知，特别是使用神经网络进行3d分割。</p>
+<p>我们将以前的三维工作分为(A)三维卷积神经网络或(B)无三维卷积的神经网络。最后，我们将介绍早期的4D感知方法。虽然2D视频是时空数据，但我们不会在本文中讨论它们，因为3D感知需要完全不同的数据处理、实现和架构。</p>
+<p><strong>3D卷积神经网络</strong>    三维卷积神经网络的第一个分支使用矩形网格和密集表示[31，5]，其中空白空间表示为0或符号距离函数。这种直截了当的表示是直观的，并且得到了所有主要公共神经网络库的支持。然而，由于3D扫描中的大部分空间是空的，它存在内存消耗高和计算速度慢的问题。为了解决这个问题，OctNet[25]建议使用八叉树结构来表示3D空间并在其上卷积。</p>
+<p>第二个分支是稀疏三维卷积神经网络[29，9]。用于高维的量子化方法有两种：矩形网格和置换面体点阵[1]。[29]使用置换面体网格，而[9]使用矩形网格进行3D分类和语义分割。</p>
+<p>最后一个分支是三维伪连续卷积神经网络[12，16]。与前人的工作不同，他们在连续空间中使用连续核来定义卷积。然而，在一个连续的空间中寻找邻居是昂贵的，因为它需要KD-树搜索而不是哈希表，并且容易受到点云分布不均匀的影响。</p>
+<p><strong>没有3D卷积的神经网络。</strong> 最近，我们看到用于3D感知的无3D卷积的神经网络有了巨大的增长。由于三维扫描是由薄的可见表面组成的，[21，30]提出在表面上使用二维卷积进行语义分割。</p>
+<p>另一个方向是基于PointNet的方法[23，24]，PointNet使用一组输入坐标作为多层感知器的特征。然而，这种方法处理的点数量有限，因此，用于从输入中裁剪出部分的滑动窗口被用于较大的空间，使得接收字段的大小相当有限。[15]试图用多点网上的递归网络来解决这些缺点，并在[16]中提出了一种适用于点网低层的3D连续卷积的变体，并获得了显著的性能提升。</p>
+<p><strong>4D perception. </strong> 第一个4D感知算法[19]提出了一个用于4D心脏图像分析的动态变形气球模型。后来，[17]使用4D马尔可夫随机场进行心脏分割。最近，[35]将用于空间数据的A3D-UNET和用于时间数据的一维自动编码器相结合，并将该模型应用于脑fMRI图像的自动编码。</p>
+<p>在本文中，我们提出了第一个用于包含4D时空数据或3D视频的高维空间的卷积神经网络。与其他将时间数据与递归神经网络或浅模型相结合的方法相比，我们的网络在整个网络中一致地使用齐次表示、卷积和其他神经网络。具体地说，卷积在许多2D/3D空间感知以及时间或序列建模中被证明是有效的[3]。</p>
 <h1 id="3-稀疏张量和卷积"><a href="#3-稀疏张量和卷积" class="headerlink" title="3. 稀疏张量和卷积"></a>3. 稀疏张量和卷积</h1><p>我们将一组4D坐标表示为$\mathcal C=\{(x_i,y_i,z_i,t_i)\}_i$或矩阵$C$和相关的特征$\mathcal F=\{\mathbf f_i\}_i$或矩阵$F$。</p>
 <p>然后一个稀疏张量可以被写为</p>
 <script type="math/tex; mode=display">
@@ -672,7 +700,7 @@ W_{\mathbf i} \mathrm x_{\mathbf u+\mathbf i}^{\rm in}
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2021/12/">十二月 2021<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/11/">十一月 2021<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/09/">九月 2020<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/archives/2021/12/">十二月 2021<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/11/">十一月 2021<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/09/">九月 2020<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
@@ -690,7 +718,7 @@ W_{\mathbf i} \mathrm x_{\mathbf u+\mathbf i}^{\rm in}
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/">工作记录<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E7%AE%97%E6%B3%95/">算法<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E8%AE%BA%E6%96%87/">论文<span class="sidebar_archives-count">6</span></a>
+                <a class="sidebar_archives-link" href="/categories/%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/">工作记录<span class="sidebar_archives-count">17</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E7%AE%97%E6%B3%95/">算法<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E8%AE%BA%E6%96%87/">论文<span class="sidebar_archives-count">7</span></a>
             </ul>
         </li>
         
