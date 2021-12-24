@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Thu Dec 23 2021 09:41:08 GMT+0800">
-        <meta property="article:modified_time" content="Fri Dec 24 2021 18:58:55 GMT+0800">
+        <meta property="article:modified_time" content="Fri Dec 24 2021 20:15:52 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "http://example.com/2021/12/23/Searching-Efficient-3D-Architectures-with-Sparse-Point-Voxel-Convolution/index.html",
     "headline": "Searching Efficient 3D Architectures with Sparse Point-Voxel Convolution",
     "datePublished": "Thu Dec 23 2021 09:41:08 GMT+0800",
-    "dateModified": "Fri Dec 24 2021 18:58:55 GMT+0800",
+    "dateModified": "Fri Dec 24 2021 20:15:52 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "ZEILAO_o",
@@ -505,16 +505,16 @@
 <p><img src="image-20211223151049750.png" alt="image-20211223151049750"></p>
 <p>图2.稀疏点-体素卷积(SPVConv)概述：它为基于稀疏体素的分支配备了一个轻量级、高分辨率的基于点的分支，可以在大场景中捕捉到精细的细节。</p>
 <h2 id="3-1-Point-Voxel-Convolution-Coarse-Voxelization（点-体素卷积：粗体素化法）"><a href="#3-1-Point-Voxel-Convolution-Coarse-Voxelization（点-体素卷积：粗体素化法）" class="headerlink" title="3.1 Point-Voxel Convolution: Coarse Voxelization（点-体素卷积：粗体素化法）"></a>3.1 Point-Voxel Convolution: Coarse Voxelization（点-体素卷积：粗体素化法）</h2><p>刘等人。[32]提出了点-体素卷积来表示三维输入数据，减少了内存消耗，同时在体素上进行卷积，减少了不规则的数据访问，提高了局部性。具体地说，其基于点的分支单独变换每个点，其基于体素的分支在来自基于点的分支的体素化输入上卷积。</p>
-<p>PVCNN(建立在点-体素卷积的基础上)在单个GPU(内存为12 GB)上最多可以支持1283个体素分支的体素，对于一个较大的室外场景(大小为100m×100m×10m)，每个体素网格将对应一个相当大的区域(大小为0.8m×0.8m×0.1m)。在这种情况下，小实例(例如，行人)将仅占用几个体素网格(参见图1)。从这几个点上，PVCNN很难从基于体素的分支中学习到任何有用的信息，导致性能相对较低(参见表1)。或者，我们可以逐段处理大型3D场景，使每个滑动窗口的比例更小。为了保存细粒度信息(即体素大小小于0.05m)，我们必须为244个滑动窗口中的每个窗口运行一次PVCNN。这需要35秒来处理单个场景，这对于大多数实时应用(例如，自动驾驶)来说是不可接受的。</p>
+<p>PVCNN(建立在点-体素卷积的基础上)在单个GPU(内存为12 GB)上最多可以支持128<sup>3</sup>个体素分支的体素，对于一个较大的室外场景(大小为100m×100m×10m)，每个体素网格将对应一个相当大的区域(大小为0.8m×0.8m×0.1m)。在这种情况下，小实例(例如，行人)将仅占用几个体素网格(参见图1)。从这几个点上，PVCNN很难从基于体素的分支中学习到任何有用的信息，导致性能相对较低(参见表1)。或者，我们可以逐段处理大型3D场景，使每个滑动窗口的比例更小。为了保存细粒度信息(即体素大小小于0.05m)，我们必须为244个滑动窗口中的每个窗口运行一次PVCNN。这需要35秒来处理单个场景，这对于大多数实时应用(例如，自动驾驶)来说是不可接受的。</p>
 <p><img src="image-20211223151518552.png" alt="image-20211223151518552"></p>
 <p>表1.点-体素卷积[32]不适用于大型3D场景。如果使用滑动窗口进行处理，对于实时应用程序来说，大的延迟是负担不起的。如果拍摄整个场景，分辨率太低，不能捕捉到有用的信息。</p>
 <h2 id="3-2-Sparse-Convolution-Aggressive-Downsampling（稀疏卷积：主动下采样）"><a href="#3-2-Sparse-Convolution-Aggressive-Downsampling（稀疏卷积：主动下采样）" class="headerlink" title="3.2 Sparse Convolution: Aggressive Downsampling（稀疏卷积：主动下采样）"></a>3.2 Sparse Convolution: Aggressive Downsampling（稀疏卷积：主动下采样）</h2><p>体积卷积一直被认为效率低下，无法放大。最近，研究人员提出了稀疏卷积[14，9]，跳过非激活区域以显著减少内存消耗。更具体地说，它首先找到输入点和输出点之间的所有活动突触(表示为核映射)，然后基于该核映射执行卷积。为了保持激活稀疏，它只考虑也属于输入的这些输出点。我们请读者参考Choy等人[9]以了解更多细节。</p>
-<p>因此，稀疏卷积可以提供比香草体积卷积高得多的分辨率。然而，由于有限的计算资源，网络不可能很深入。因此，网络必须非常积极地进行下采样，以获得足够大的接受范围，这是非常有损耗的。例如，最先进的Minkowski Net[9]逐渐对输入点云应用四个下采样层，之后，体素大小将变为0.05×24=0.8m。与Point-Voxel卷积类似，此分辨率太粗，无法捕获小实例(参见图4)。</p>
+<p>因此，稀疏卷积可以提供比原始体积卷积高得多的分辨率。然而，由于有限的计算资源，网络不可能很深入。因此，网络必须非常积极地进行下采样，以获得足够大的接受范围，这是非常有损耗的。例如，最先进的MinkowskiNet[9]逐渐对输入点云应用四个下采样层，之后，体素大小将变为$0.05×2^4=0.8$m。与Point-Voxel卷积类似，此分辨率太粗，无法捕获小实例(参见图4)。</p>
 <blockquote>
 <p>Vanilla<br>Vanilla是神经网络领域的常见词汇，比如Vanilla Neural Networks、Vanilla CNN等。Vanilla本意是香草，在这里基本等同于raw。比如Vanilla Neural Networks实际上就是BP神经网络，而Vanilla CNN实际上就是最原始的CNN。</p>
 </blockquote>
 <p><img src="image-20211223152414055.png" alt="image-20211223152414055"></p>
-<p>图4. Minkowski Net在识别小对象和区域边界方面有较高的错误，而SPVNAS由于基于高分辨率的点分支而更好地识别小对象。</p>
+<p>图4. MinkowskiNet在识别小对象和区域边界方面有较高的错误，而SPVNAS由于基于高分辨率的点分支而更好地识别小对象。</p>
 <h2 id="3-3-Solution-Sparse-Point-Voxel-Convolution（解决方案：稀疏点-体素卷积）"><a href="#3-3-Solution-Sparse-Point-Voxel-Convolution（解决方案：稀疏点-体素卷积）" class="headerlink" title="3.3 Solution: Sparse Point-Voxel Convolution（解决方案：稀疏点-体素卷积）"></a>3.3 Solution: Sparse Point-Voxel Convolution（解决方案：稀疏点-体素卷积）</h2><p>为了克服这两个模块的局限性，我们在图2中提出了稀疏点-体素卷积(SPVConv)：基于点的分支始终保持高分辨率表示，而基于稀疏体素的分支则采用分离卷积来跨不同的接收场大小建模。两个分支通过稀疏体素化和去体素化以微不足道的代价进行通信。</p>
 <p><strong>数据表示</strong>。我们的稀疏点-体素卷积运算在：</p>
 <ul>
@@ -1047,6 +1047,26 @@ It will not impact the appearance and can give developers a lot of support :)
 </script>
 
 <!-- MathJax Load-->
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
 
 
 <!-- Bing Background -->
