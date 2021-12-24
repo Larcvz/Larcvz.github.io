@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    F<meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+ 
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Searching Efficient 3D Architectures with Sparse Point-Voxel Convolution | 
+        
+        ZEILAO的茶屋
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="Haotian Tang, Zhijian Liu, Shengyu Zhao, Yujun Lin, Ji Lin, Hanrui Wang, &amp;amp; Song Han (2020). Searching Efficient 3D Architectures with Sparse Point-Voxel Convolution European Conference on Computer Vision.">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?ezyEvm8ST5CGfpA+kFFi1g==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="ZEILAO的茶屋">
+    <meta name="msapplication-starturl" content="http://example.com/2021/12/23/Searching-Efficient-3D-Architectures-with-Sparse-Point-Voxel-Convolution/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="ZEILAO的茶屋">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://example.com/2021/12/23/Searching-Efficient-3D-Architectures-with-Sparse-Point-Voxel-Convolution/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Searching Efficient 3D Architectures with Sparse Point-Voxel Convolution | ZEILAO的茶屋">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="Haotian Tang, Zhijian Liu, Shengyu Zhao, Yujun Lin, Ji Lin, Hanrui Wang, &amp;amp; Song Han (2020). Searching Efficient 3D Architectures with Sparse Point-Voxel Convolution European Conference on Computer Vision.">
+    
+
+    
+        <meta property="article:published_time" content="Thu Dec 23 2021 09:41:08 GMT+0800">
+        <meta property="article:modified_time" content="Fri Dec 24 2021 14:33:01 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://example.com/2021/12/23/Searching-Efficient-3D-Architectures-with-Sparse-Point-Voxel-Convolution/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://example.com/2021/12/23/Searching-Efficient-3D-Architectures-with-Sparse-Point-Voxel-Convolution/index.html",
+    "headline": "Searching Efficient 3D Architectures with Sparse Point-Voxel Convolution",
+    "datePublished": "Thu Dec 23 2021 09:41:08 GMT+0800",
+    "dateModified": "Fri Dec 24 2021 14:33:01 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "ZEILAO_o",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/cat.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "ZEILAO的茶屋",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": "",
+    "description": "Haotian Tang, Zhijian Liu, Shengyu Zhao, Yujun Lin, Ji Lin, Hanrui Wang, &amp;amp; Song Han (2020). Searching Efficient 3D Architectures with Sparse Point-Voxel Convolution European Conference on Computer Vision.",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%91%98%E8%A6%81"><span class="post-toc-number">1.</span> <span class="post-toc-text">摘要</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%BC%95%E8%A8%80"><span class="post-toc-number">2.</span> <span class="post-toc-text">引言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="post-toc-number">3.</span> <span class="post-toc-text">2 相关工作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-1-3D-Perception-Models%EF%BC%883D%E6%84%9F%E7%9F%A5%E6%A8%A1%E5%9E%8B%EF%BC%89"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">2.1 3D Perception Models（3D感知模型）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-2-Neural-Architecture-Search-%E7%A5%9E%E7%BB%8F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2.2 Neural Architecture Search(神经体系结构搜索)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-SPVConv%EF%BC%9A%E8%AE%BE%E8%AE%A1%E6%9C%89%E6%95%88%E7%9A%843D%E6%A8%A1%E5%9D%97"><span class="post-toc-number">4.</span> <span class="post-toc-text">3. SPVConv：设计有效的3D模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-1-Point-Voxel-Convolution-Coarse-Voxelization%EF%BC%88%E7%82%B9-%E4%BD%93%E7%B4%A0%E5%8D%B7%E7%A7%AF%EF%BC%9A%E7%B2%97%E4%BD%93%E7%B4%A0%E5%8C%96%E6%B3%95%EF%BC%89"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">3.1 Point-Voxel Convolution: Coarse Voxelization（点-体素卷积：粗体素化法）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-2-Sparse-Convolution-Aggressive-Downsampling%EF%BC%88%E7%A8%80%E7%96%8F%E5%8D%B7%E7%A7%AF%EF%BC%9A%E4%B8%BB%E5%8A%A8%E4%B8%8B%E9%87%87%E6%A0%B7%EF%BC%89"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">3.2 Sparse Convolution: Aggressive Downsampling（稀疏卷积：主动下采样）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-3-Solution-Sparse-Point-Voxel-Convolution%EF%BC%88%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E7%A8%80%E7%96%8F%E7%82%B9-%E4%BD%93%E7%B4%A0%E5%8D%B7%E7%A7%AF%EF%BC%89"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">3.3 Solution: Sparse Point-Voxel Convolution（解决方案：稀疏点-体素卷积）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Feature-Aggregation-%E7%89%B9%E5%BE%81%E8%81%9A%E5%90%88"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">Feature Aggregation.(特征聚合)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Sparse-Devoxelization"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">Sparse Devoxelization.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Point-Transformation-and-Feature-Fusion-%EF%BC%88%E7%82%B9%E5%8F%98%E6%8D%A2%E5%92%8C%E7%89%B9%E5%BE%81%E8%9E%8D%E5%90%88%E3%80%82%EF%BC%89"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">Point Transformation and Feature Fusion. （点变换和特征融合。）</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-3D-NAS-Searching-Efficient-3D-Architectures%EF%BC%88%E6%90%9C%E7%B4%A2%E9%AB%98%E6%95%88%E7%9A%843D%E6%9E%B6%E6%9E%84%EF%BC%89"><span class="post-toc-number">5.</span> <span class="post-toc-text">4 3D-NAS: Searching Efficient 3D Architectures（搜索高效的3D架构）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-1-Design-Space%EF%BC%88%E8%AE%BE%E8%AE%A1%E7%A9%BA%E9%97%B4%EF%BC%89"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">4.1 Design Space（设计空间）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-2-Training-Paradigm-%E8%AE%AD%E7%BB%83%E8%8C%83%E5%BC%8F"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">4.2 Training Paradigm 训练范式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-3-Search-Algorithm"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">4.3 Search Algorithm</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5-%E5%AE%9E%E9%AA%8C"><span class="post-toc-number">6.</span> <span class="post-toc-text">5 实验</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-1-3D-Scene-Segmentation-%E4%B8%89%E7%BB%B4%E5%9C%BA%E6%99%AF%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">5.1 3D Scene Segmentation(三维场景语义分割)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-2-3D-Object-Detection-%E4%B8%89%E7%BB%B4%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">5.2 3D Object Detection (三维目标检测)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#6-%E5%88%86%E6%9E%90"><span class="post-toc-number">7.</span> <span class="post-toc-text">6 分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-1-Sparse-Point-Voxel-Convolution-SPVConv"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">6.1 Sparse Point-Voxel Convolution (SPVConv)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-2-3D-Neural-Architecture-Search-3D-NAS-%E4%B8%89%E7%BB%B4%E7%A5%9E%E7%BB%8F%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">6.2 3D Neural Architecture Search (3D-NAS)三维神经结构搜索</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#7-%E7%BB%93%E8%AE%BA"><span class="post-toc-number">8.</span> <span class="post-toc-text">7 结论</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="post-toc-number">9.</span> <span class="post-toc-text">参考文献</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#A-1-Implementation-Details%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="post-toc-number">10.</span> <span class="post-toc-text">A.1 Implementation Details实现细节</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#A-1-1-SPVCNN-Backbone-Network-%E4%B8%BB%E5%B9%B2%E7%BD%91%E7%BB%9C"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">A.1.1 SPVCNN: Backbone Network(主干网络)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#A-1-2-3D-NAS-Architecture-Search"><span class="post-toc-number">10.2.</span> <span class="post-toc-text">A.1.2 3D-NAS: Architecture Search</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Searching Efficient 3D Architectures with Sparse Point-Voxel Convolution
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/cat.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>ZEILAO_o</strong>
+        <span>12月 23, 2021</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Searching Efficient 3D Architectures with Sparse Point-Voxel Convolution&url=http://example.com/2021/12/23/Searching-Efficient-3D-Architectures-with-Sparse-Point-Voxel-Convolution/index.html&pic=http://example.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Searching Efficient 3D Architectures with Sparse Point-Voxel Convolution&url=http://example.com/2021/12/23/Searching-Efficient-3D-Architectures-with-Sparse-Point-Voxel-Convolution/index.html&via=ZEILAO_o" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2021/12/23/Searching-Efficient-3D-Architectures-with-Sparse-Point-Voxel-Convolution/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://example.com/2021/12/23/Searching-Efficient-3D-Architectures-with-Sparse-Point-Voxel-Convolution/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>Haotian Tang, Zhijian Liu, Shengyu Zhao, Yujun Lin, Ji Lin, Hanrui Wang, &amp; Song Han (2020). Searching Efficient 3D Architectures with Sparse Point-Voxel Convolution <em>European Conference on Computer Vision</em>.</p>
+<a id="more"></a>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>自动驾驶汽车需要高效、准确地理解3D场景，才能安全驾驶。在硬件资源有限的情况下，现有的3D感知模型不能很好地识别小实例(如行人、骑自行车的人)，这是由于低分辨率的体素化和激进的下采样。为此，我们提出了稀疏点-体卷积(SPVConv)，这是一个轻量级的3D模块，它为VanillaSparse卷积提供了高分辨率的基于点的分支。这种基于点的分支即使在大型户外场景中也能够保留细节，而开销可以忽略不计。为了探索高效的三维模型的频谱，我们首先定义了一个基于SPVConv的灵活的体系结构设计空间，然后提出了3D神经体系结构搜索(3D-NAS)，以在这个不同的设计空间上高效地搜索最优的网络结构。实验结果验证了SPVNAS模型的快速性和准确性：它比目前最先进的Minkowski Net高出3.3个百分点，在好胜语义KITI排行榜上名列第1位。在Minkowski Net上实现了8倍的计算量减少和3倍的实测加速比，仍然具有较高的精度。最后，将我们的方法移植到三维目标检测中，与基于KITTI的一阶段检测基线相比，取得了一致的改进。</p>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>3D深度学习由于其广泛的应用而受到越来越多的关注：例如，它已经被用于LiDAR感知中，作为自动驾驶系统的眼睛来理解户外场景的语义。由于乘客的安全是自动驾驶汽车的重中之重，因此要求3D感知模型同时达到高精度和低延迟。然而，自动驾驶汽车上的硬件资源受到外形因素(因为我们不想要整个工作站)和散热的严格限制。因此，在有限的计算资源(如内存)下设计高效的三维神经网络模型是至关重要的。</p>
+<p><img src="image-20211223144623188.png" alt="image-20211223144623188"></p>
+<p>图1。小的实例(例如行人和骑自行车的人)在低分辨率下很难识别(由于粗体素化或激进的下采样)。</p>
+<p>研究人员主要利用了两种3D数据表示方式：点云和光栅化体素网格。正如刘等人所分析的那样。[32]，基于点的方法[40，43，28]将高达90%的运行时间浪费在构造不规则数据上，而不是在实际的特征提取上。另一方面，基于体素的方法通常存在严重的信息丢失问题：即密集体素[36，32]的分辨率受到记忆的严格限制；稀疏体素[14，9]需要激进的下采样来获得更大的感受野，从而导致更深层次的分辨率较低。在分辨率较低的情况下(参见图1)，可能会将多个点甚至多个小对象合并到一个网格中，变得无法区分。在这种情况下，小实例(例如，行人和骑自行车的人)与大对象(例如，汽车)相比处于劣势。因此，当硬件资源有限且分辨率较低时，以前的3D模块的效果会打折扣。</p>
+<p>针对这些问题，我们提出了一种新颖的三维模型—稀疏点体卷积(Sparse Point-Voxel Convsion，SPVConv)，该模块在香草稀疏卷积的基础上引入了低成本的高分辨率点分支，有助于捕捉细节。在SPVConv的基础上，我们进一步提出了3D神经结构搜索(3D-NAS)来搜索高效的3D模型。我们在搜索空间中加入细粒度的信道号以增加多样性，并引入渐进式深度收缩来加速训练。实验结果验证了该模型的快速性和准确性：在较低的时延下，该模型在MIU中的性能比Minkowski Net高3.3%。在保证较高精度的同时，在Minkowski Net上实现了8倍的运算量减少和3倍的实测加速比。我们进一步将我们的方法移植到KITTI来进行3D目标检测，并且在之前的一阶段检测基线上取得了一致的改进。</p>
+<p>本文的贡献有三个方面：</p>
+<ol>
+<li>我们设计了一个轻量级的3D模块SPVConv，提高了过去在有限硬件资源下对小对象的性能要求。</li>
+<li>我们介绍了第一个用于3D场景理解的AutoML框架3D-NAS，它在特定的资源约束下提供最佳的3D模型。</li>
+<li>我们的方法在好胜语义KITTI<sup><a href="#fn_*" id="reffn_*">*</a></sup>排行榜上以很大的差距和排名第一的优势超过了所有以前的方法。在出版之后。它还可以转移到目标检测上，并获得一致的改进。</li>
+</ol>
+<h1 id="2-相关工作"><a href="#2-相关工作" class="headerlink" title="2 相关工作"></a>2 相关工作</h1><h2 id="2-1-3D-Perception-Models（3D感知模型）"><a href="#2-1-3D-Perception-Models（3D感知模型）" class="headerlink" title="2.1 3D Perception Models（3D感知模型）"></a>2.1 3D Perception Models（3D感知模型）</h2><p>三维深度学习作为自动驾驶中LiDAR感知的重要手段，受到越来越多的关注。早期的研究[7，36，42，64，77]依赖于体积表示和香草三维卷积来处理三维数据。由于三维表示的稀疏性，密集的体表示本身效率不高，不可避免地会带来信息丢失。因此，研究人员提出使用对称函数直接学习三维点云表示法[40]。为了提高邻域建模能力，研究人员在几何[28，35，43，52，55，56，67，69]或语义[63]邻域上定义了基于点的卷积。还有为特定任务量身定做的3D模型，例如基于这些模块构建的检测[38，39，41，47-49，70，73]和实例分割[16，21，23，71]。</p>
+<p>最近，一些研究者开始关注3D深度学习的效率方面。Riegler等人[45]的研究成果。Wang et al.[60，61]和Lei等人。[25]建议使用密度较低的区域占用较少体素网格的高树来减少体积表示的内存占用。刘等人。[32]分析了基于点的方法和基于体素的方法的瓶颈，提出了点-体素卷积方法。Graham et al.[14]和Choy等人。[9]提出了Sparse卷积算法，通过保持激活的稀疏性和跳过非活动区域的计算来加速体积卷积。</p>
+<h2 id="2-2-Neural-Architecture-Search-神经体系结构搜索"><a href="#2-2-Neural-Architecture-Search-神经体系结构搜索" class="headerlink" title="2.2 Neural Architecture Search(神经体系结构搜索)"></a>2.2 Neural Architecture Search(神经体系结构搜索)</h2><p>为了减轻人工设计神经网络的负担[18，46，33，75，20]，研究人员引入了神经体系结构搜索(NAS)，以使用强化学习[79，80]和进化搜索[29]自动高精度地构建神经网络。新一波研究开始利用神经结构搜索[53，66，54]为移动部署设计高效模型。然而，传统的框架需要很高的计算成本和相当大的碳足迹[51]。针对撞击，研究人员提出了不同的技术来降低搜索成本，包括可微结构搜索[30]、路径级二值化[6]、单路径单次采样[15，8，4]和权重分担[50，4，57]。此外，神经结构搜索也被用于压缩和加速神经网络，包括修剪[17，31，5，27]和量化[58，15，59，62]。这些方法中的大多数都是为2D视觉识别量身定做的，因为2D视觉识别有许多定义明确的搜索空间[44]。最近，研究人员将神经结构搜索应用于3D医学图像分割[78，22，72，2，65，74]和3D形状分类[34，26]。然而，它们不能直接应用于3D场景理解，因为3D医学数据仍然是类似于2D图像的格式(这与3D场景完全不同)，并且3D对象的尺度比3D场景小得多(这使得它们对分辨率的敏感度较低)。</p>
+<h1 id="3-SPVConv：设计有效的3D模块"><a href="#3-SPVConv：设计有效的3D模块" class="headerlink" title="3. SPVConv：设计有效的3D模块"></a>3. SPVConv：设计有效的3D模块</h1><p>我们首先回顾最近的两个3D模块：点-体素卷积[32]和Sparse卷积[9]，并分析它们的瓶颈。我们观察到，当内存受限时，它们都遭受了信息丢失(由粗体素化或激进的下采样引起)。为此，我们引入了稀疏点-体素卷积(SPVConv)，以有效地处理大型3D场景(如图2所示)。</p>
+<p><img src="image-20211223151049750.png" alt="image-20211223151049750"></p>
+<p>图2.稀疏点-体素卷积(SPVConv)概述：它为基于稀疏体素的分支配备了一个轻量级、高分辨率的基于点的分支，可以在大场景中捕捉到精细的细节。</p>
+<h2 id="3-1-Point-Voxel-Convolution-Coarse-Voxelization（点-体素卷积：粗体素化法）"><a href="#3-1-Point-Voxel-Convolution-Coarse-Voxelization（点-体素卷积：粗体素化法）" class="headerlink" title="3.1 Point-Voxel Convolution: Coarse Voxelization（点-体素卷积：粗体素化法）"></a>3.1 Point-Voxel Convolution: Coarse Voxelization（点-体素卷积：粗体素化法）</h2><p>刘等人。[32]提出了点-体素卷积来表示三维输入数据，减少了内存消耗，同时在体素上进行卷积，减少了不规则的数据访问，提高了局部性。具体地说，其基于点的分支单独变换每个点，其基于体素的分支在来自基于点的分支的体素化输入上卷积。</p>
+<p>PVCNN(建立在点-体素卷积的基础上)在单个GPU(内存为12 GB)上最多可以支持1283个体素分支的体素，对于一个较大的室外场景(大小为100m×100m×10m)，每个体素网格将对应一个相当大的区域(大小为0.8m×0.8m×0.1m)。在这种情况下，小实例(例如，行人)将仅占用几个体素网格(参见图1)。从这几个点上，PVCNN很难从基于体素的分支中学习到任何有用的信息，导致性能相对较低(参见表1)。或者，我们可以逐段处理大型3D场景，使每个滑动窗口的比例更小。为了保存细粒度信息(即体素大小小于0.05m)，我们必须为244个滑动窗口中的每个窗口运行一次PVCNN。这需要35秒来处理单个场景，这对于大多数实时应用(例如，自动驾驶)来说是不可接受的。</p>
+<p><img src="image-20211223151518552.png" alt="image-20211223151518552"></p>
+<p>表1.点-体素卷积[32]不适用于大型3D场景。如果使用滑动窗口进行处理，对于实时应用程序来说，大的延迟是负担不起的。如果拍摄整个场景，分辨率太低，不能捕捉到有用的信息。</p>
+<h2 id="3-2-Sparse-Convolution-Aggressive-Downsampling（稀疏卷积：主动下采样）"><a href="#3-2-Sparse-Convolution-Aggressive-Downsampling（稀疏卷积：主动下采样）" class="headerlink" title="3.2 Sparse Convolution: Aggressive Downsampling（稀疏卷积：主动下采样）"></a>3.2 Sparse Convolution: Aggressive Downsampling（稀疏卷积：主动下采样）</h2><p>体积卷积一直被认为效率低下，无法放大。最近，研究人员提出了稀疏卷积[14，9]，跳过非激活区域以显著减少内存消耗。更具体地说，它首先找到输入点和输出点之间的所有活动突触(表示为核映射)，然后基于该核映射执行卷积。为了保持激活稀疏，它只考虑也属于输入的这些输出点。我们请读者参考Choy等人[9]以了解更多细节。</p>
+<p>因此，稀疏卷积可以提供比香草体积卷积高得多的分辨率。然而，由于有限的计算资源，网络不可能很深入。因此，网络必须非常积极地进行下采样，以获得足够大的接受范围，这是非常有损耗的。例如，最先进的Minkowski Net[9]逐渐对输入点云应用四个下采样层，之后，体素大小将变为0.05×24=0.8m。与Point-Voxel卷积类似，此分辨率太粗，无法捕获小实例(参见图4)。</p>
+<blockquote>
+<p>Vanilla<br>Vanilla是神经网络领域的常见词汇，比如Vanilla Neural Networks、Vanilla CNN等。Vanilla本意是香草，在这里基本等同于raw。比如Vanilla Neural Networks实际上就是BP神经网络，而Vanilla CNN实际上就是最原始的CNN。</p>
+</blockquote>
+<p><img src="image-20211223152414055.png" alt="image-20211223152414055"></p>
+<p>图4. Minkowski Net在识别小对象和区域边界方面有较高的错误，而SPVNAS由于基于高分辨率的点分支而更好地识别小对象。</p>
+<h2 id="3-3-Solution-Sparse-Point-Voxel-Convolution（解决方案：稀疏点-体素卷积）"><a href="#3-3-Solution-Sparse-Point-Voxel-Convolution（解决方案：稀疏点-体素卷积）" class="headerlink" title="3.3 Solution: Sparse Point-Voxel Convolution（解决方案：稀疏点-体素卷积）"></a>3.3 Solution: Sparse Point-Voxel Convolution（解决方案：稀疏点-体素卷积）</h2><p>为了克服这两个模块的局限性，我们在图2中提出了稀疏点-体素卷积(SPVConv)：基于点的分支始终保持高分辨率表示，而基于稀疏体素的分支则采用分离卷积来跨不同的接收场大小建模。两个分支通过稀疏体素化和去体素化以微不足道的代价进行通信。</p>
+<p><strong>数据表示</strong>。我们的稀疏点-体素卷积运算在：</p>
+<ul>
+<li>稀疏体素化张量$S=(\{(p^s_m，f^s_m)\}，v)$，其中$p^s_m=(x^s_m，y^s_m，z^s_m)$是3D坐标，$f^s_m$是第m个非零网格的特征向量，$v$是当前层中一个网格的体素大小(即边长)；</li>
+<li>点云张量$T={(P^t_k,f^t_k)}$，其中$p_k=(x_k,y_k,z_k)$是三维坐标，$f_k$是第$k$个点的特征向量。</li>
+</ul>
+<p><strong>稀疏体素化</strong>。在基于上稀疏体素的分支中，我们首先将高分辨率点云张量$T$变换为稀疏张量$S$：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\hat p^t_k = (\hat x^t_k, \hat y^t_k,\hat z^t_k) = (floor(x^t_k/v), floor(y^t_k/v), floor(z^t_k/v)),& \tag{1}\\
+f^s_m = \frac{1}{N_m}\sum^n_{k=1}\mathbb I[\hat x^t_k = x^s_m, \hat y^t_k = y^s_m, \hat z^t_k = z^s_m]\cdot f^t_k,& \tag{2}
+\end{align}</script><p>其中，$\mathbb I[·]$是$\hat P^t_k$是否属于体素网格$p^s_m$的二进制指示符，$N_m$是归一化因子(即，落入第$m$个非零体素网格的点数)。然而，这样的公式需要$\mathcal O(Mn)$复杂度，其中$m=|S|$和$n=|T|$。由于$m$，$n$的典型值约为10<sup>5</sup>，这种简单的实现对于实时应用是不切实际的。</p>
+<p>为此，我们提出使用GPU哈希表来加速稀疏体素化和去体素化。具体地说，我们首先为稀疏体素化张量$S$中的所有激活点构造一个哈希表，该哈希表可以在$\mathcal O(n)$时间内完成。之后，我们迭代$T$中的所有点，对于每个点，我们使用其体素化坐标作为键来查询稀疏体素化张量中的相应索引。由于哈希表上的查找需要$\mathcal O(1)$时间[37]，因此该查询步骤总共将花费$O(m)$时间。因此，坐标索引的总时间将从$O(mn)$减少到$O(m+n)$。</p>
+<h2 id="Feature-Aggregation-特征聚合"><a href="#Feature-Aggregation-特征聚合" class="headerlink" title="Feature Aggregation.(特征聚合)"></a>Feature Aggregation.(特征聚合)</h2><p>然后，我们使用残差稀疏卷积块序列对稀疏体素化张量进行邻域特征聚合[9]。我们使用与稀疏体素化相同的哈希表实现在GPU上并行稀疏卷积中的内核映射操作，这比Choy等人的实现提供了1.3倍的加速比。[9]。请注意，我们的方法和基线都已升级到此加速实现。</p>
+<h2 id="Sparse-Devoxelization"><a href="#Sparse-Devoxelization" class="headerlink" title="Sparse Devoxelization."></a>Sparse Devoxelization.</h2><p>对于聚集的特征(以稀疏张量的形式)，我们将它们转换回基于点的表示，以便将来自两个分支的信息融合在一起。类似于刘等人。[32]中，我们选择用8个相邻体网格对每个点的特征进行三线性插值，而不是使用naive最近插值法(最近邻插值)。</p>
+<h2 id="Point-Transformation-and-Feature-Fusion-（点变换和特征融合。）"><a href="#Point-Transformation-and-Feature-Fusion-（点变换和特征融合。）" class="headerlink" title="Point Transformation and Feature Fusion. （点变换和特征融合。）"></a>Point Transformation and Feature Fusion. （点变换和特征融合。）</h2><p>在较低的基于点的分支中，我们直接在每个点上应用MLP来提取单独的点特征。然后，我们将两个分支的输出与加法进行融合，以组合所提供的补充信息。与普通稀疏卷积相比，MLP层只需要很少的计算开销(按MAC数量计算为4%)，但会将重要的细节引入信息流(参见图5)。</p>
+<blockquote>
+<p>MAC: 乘积累加运算 是在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/數字信號處理器">数字信号处理器</a>或一些<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/微處理器">微处理器</a>中的特殊运算。实现此运算操作的硬件电路单元，被称为“乘数累加器”。这种运算的操作，是将乘法的乘积结果和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/累加器">累加器</a> A 的值相加，再存入累加器：</p>
+<script type="math/tex; mode=display">
+a \leftarrow a + b \times c</script><p>若没有使用 MAC 指令，上述的程序可能需要二个<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/指令">指令</a>，但 MAC 指令可以使用一个指令完成。而许多运算（例如<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/卷积">卷积</a>运算、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/点积">点积</a>运算、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/矩阵">矩阵</a>运算、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/数字滤波器">数字滤波器</a>运算、乃至<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/多项式">多项式</a>的求值运算）都可以分解为数个 MAC 指令，因此可以提高上述运算的效率。</p>
+<p>MAC指令的输入及输出的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/數據類型">数据类型</a>可以是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/整數">整数</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/定点数">定点数</a>或是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/浮點數">浮点数</a>。若处理浮点数时，会有两次的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/數值修約規則">数值修约</a>（Rounding），这在很多典型的DSP上很常见。若一条MAC指令在处理浮点数时只有一次的数值修约，则这种指令称为“融合乘加运算”/“积和熔加运算”（fused multiply-add, FMA）或“熔合乘法累积运算”（fused multiply–accumulate, FMAC）。</p>
+</blockquote>
+<h1 id="4-3D-NAS-Searching-Efficient-3D-Architectures（搜索高效的3D架构）"><a href="#4-3D-NAS-Searching-Efficient-3D-Architectures（搜索高效的3D架构）" class="headerlink" title="4 3D-NAS: Searching Efficient 3D Architectures（搜索高效的3D架构）"></a>4 3D-NAS: Searching Efficient 3D Architectures（搜索高效的3D架构）</h1><p>即使有了我们的模块，设计一个高效的神经网络仍然是一个挑战，我们需要仔细调整网络结构(例如，所有层的通道数和核大小)来满足实际应用的约束(例如，延迟、能量和准确性)。为此，我们引入了3D神经体系结构搜索(3D-NAS)，以自动设计高效的3D模型(如图3所示)。</p>
+<p><img src="image-20211224103808565.png" alt="image-20211224103808565"></p>
+<p>图3. 三维神经体系结构搜索(3D-NAS)概述：我们首先训练一个由多个SPVConv组成的超级网络，支持细粒度的通道数和弹性网络深度。然后，在给定的计算约束条件下，进行进化体系结构搜索，得到最优的候选模型。</p>
+<h2 id="4-1-Design-Space（设计空间）"><a href="#4-1-Design-Space（设计空间）" class="headerlink" title="4.1 Design Space（设计空间）"></a>4.1 Design Space（设计空间）</h2><p>设计空间的质量对神经结构搜索的性能有很大影响。在我们的搜索空间中，我们结合了细粒度的信道号和弹性的网络深度；但是，我们不支持不同的核大小。</p>
+<p><strong>Fine-grained Channel Numbers.</strong>（细粒度通道数 ）计算开销随着信道数的增加呈二次曲线增加，因此信道数的选择对网络效率有很大的影响。大多数现有的神经结构框架[6]只支持粗粒度的信道号选择：例如，在几个(2-3)选择中搜索ResNet/MobileNet块的扩展比。在这种情况下，只有块的中间通道号可以切换，而输入和输出通道号保持不变，经验上，我们观察到这限制了搜索空间的变化。为此，我们通过允许从一个大的选择集合(大小为$O(n)$)中选择所有频道号来扩大搜索空间。这种细粒度的信道号码选择极大地增加了每个挡路的候选数目：例如，对于具有两个连续卷积的挡路，从常量(2-3)增加到$O(n^2)$。</p>
+<p><strong>Elastic Network Depths.</strong>(弹性网络深度) 我们在设计空间中支持不同的网络深度。对于3DCNN，单独减少信道数目并不能获得显著的测量加速比，这与2DCNN截然不同。例如，通过将Minkowski Net[9]中的所有信道数缩减4倍和8倍，MAC的数量将分别减少到7.5G和1.9G。然而，尽管MAC的数量大大减少，但它们在GPU上的测量延迟非常相似：105ms和96ms(在单个GTX1080TiGPU上测量)。这表明，尽管MAC的数量非常少，但仅靠缩减频道数量并不能为我们提供非常有效的模式。这可能是因为3D模块通常比2D模块更受内存限制；MAC的数量随频道数呈二次曲线减少，而内存则呈线性减少。受此启发，我们选择将弹性网络深度融入到我们的设计空间中，以便这些计算量非常小(和内存成本很大)的层可以被移除并合并到相邻的层中。 </p>
+<p><strong>Small Kernel Matters.</strong>（小内核很重要。）核大小通常包含在二维CNN的搜索空间中。这是因为在GPU上，具有较大核尺寸的单卷积比具有较小核尺寸的多卷积具有更高的效率，但对于3D CNN则不是这样。从计算角度看，核大小为5的单个2D卷积比核大小为3的两个2D卷积只需要1.4倍的MAC；而核大小为5的单个3D卷积需要的MAC比核大小为3的两个3D卷积(如果应用于密集体素网格)多2.3倍。这种较大的计算代价使得它不适合在3DCNN中使用大的核尺寸。此外，3D模块的计算开销还与内核大小有关。例如，SparseConvsion[14，9]建立核映射需要$O(k^3n)$个时间，其中$k$是核大小，$n$是点数，这表明它的代价相对于核大小呈立方增长。基于这些原因，我们决定将所有卷积的核大小保持为3，并且不允许在我们的搜索空间中改变核大小。即使在较小的核大小的情况下，通过改变网络深度仍然可以获得较大的接收场，可以达到与改变核大小相同的效果。</p>
+<h2 id="4-2-Training-Paradigm-训练范式"><a href="#4-2-Training-Paradigm-训练范式" class="headerlink" title="4.2 Training Paradigm 训练范式"></a>4.2 Training Paradigm 训练范式</h2><p>搜索细粒度的设计空间是非常具有挑战性的，因为不可能从头开始训练每个采样的候选网络[53]。由郭等人激励。[15]将所有候选网络合并成一个超级网络，在对该超级网络进行一次训练后，可以直接提取每个候选网络的继承权。这样，总的训练成本可以从$O(n)$降低到$O(1)$，其中$n$是候选网络的数目。</p>
+<p><strong>Uniform Sampling.</strong> 在每次训练迭代中，我们从超级网络中随机抽样一个候选网络：随机选择每个层的信道号，然后随机选择每个阶段的网络深度(即要使用的块数)。训练过程中需要采样的候选网络总数非常有限，因此我们选择在不同的GPU上对不同的候选网络进行采样，并在每一步对它们的梯度进行平均，这样就可以采样更多的候选网络。对于3D，这一点更为关键，因为3D数据集通常比2D数据集包含更少的训练样本：例如，SemancKITTI[3]上的20K与ImageNet[11]上的1M。</p>
+<p><strong>Weight Sharing.</strong>(权重共享) 由于候选网络的数量巨大，每个候选网络只会针对总调度的一小部分进行优化，因此，仅靠均匀采样并不足以充分训练所有候选网络(即获得与从头开始训练相同的性能水平)。针对撞击这一点，我们采用了权重共享技术，使得每个候选网络在每次迭代中都能得到优化，即使不抽样也能做到这一点。具体地说，给定每个卷积层的输入信道号$C_{in}$和输出信道号$C_{out}$，我们简单地相应地从权重张量索引第一个$C_{in}$和$C_{out}$信道以执行卷积[15]。对于每个批次归一化层，我们基于采样的通道号$c$，类似地从权重张量中裁剪前$c$个通道。最后，对于每个阶段的采样深度d，我们选择保留前d层，而不是随机采样d层。这可确保每个层始终对应于舞台内的相同深度索引。</p>
+<p><strong>Progressive Depth Shrinking.</strong>（渐进式深度收缩）假设我们有$n$个阶段，每个阶段都有从1到$m$的不同深度选择。如果我们随机抽样每个阶段$k$的深度$d_k$，则期望的网络总深度为$\mathbb E[d]=\sum^n_{k=1}\mathbb E[d_k]=n×(m+1)/2$，远小于最大深度$nm$。此外，最大候选网络(具有最大深度)被采样的概率非常小：$m^{−n}$。因此，最大的候选网络由于被采样的可能性很小而训练得很差。为此，我们引入了渐进式深度收缩来缓解这一问题。我们将训练时段划分为$m$个片段，用于$m$个不同的深度选择。在第$k$个训练段中，我们只允许每个阶段的深度在$m−k+1$到$m$之间选择，这本质上是为了逐步扩大搜索空间，以便能够更频繁地对这些大的候选网络进行采样。</p>
+<h2 id="4-3-Search-Algorithm"><a href="#4-3-Search-Algorithm" class="headerlink" title="4.3 Search Algorithm"></a>4.3 Search Algorithm</h2><p>在超级网络得到充分训练后，我们使用进化体系结构搜索在一定的资源约束下找到最优的体系结构。</p>
+<p><strong>Resource Constraints. </strong>(资源限制) 我们使用MAC的数量作为资源约束。对于3DCNN，MAC的数量不能简单地由输入大小和网络结构决定：例如，稀疏卷积只对活动突触执行计算，因此其计算也由输入的稀疏模式决定。为了解决这个问题，我们首先估计每个卷积层在整个数据集上的平均核映射大小，然后我们可以基于这些统计数据来测量MAC的数量。</p>
+<p><strong>Evolutionary Search.</strong>（进化搜索）我们使用进化算法使架构搜索自动化[15]。我们用n个随机抽样的候选网络来初始化起始种群。在每一次迭代中，我们评估种群中的所有候选网络，并选择具有最高mIoU的$k$个模型(即最适合的个体)。然后产生具有$(n/2)$个突变和$(n/2)$个交叉的下一次迭代的种群。对于每个变异，我们从前$k$个候选中随机选择一个，并以预定义的概率改变它的每个体系结构参数(例如，信道号、网络深度)；对于每个交叉，我们从前$k$个候选中随机选择两个，并通过随机将它们融合在一起来生成新的模型。最后，从上一次迭代的总体中得到最优模型。在进化搜索过程中，我们确保种群中的所有候选网络总是满足给定的资源约束(我们将对另一个候选网络进行重采样，直到满足资源约束)。</p>
+<h1 id="5-实验"><a href="#5-实验" class="headerlink" title="5 实验"></a>5 实验</h1><p>基于我们的轻量级3D模块，我们首先手动构建我们的主干网络(表示为SPVCNN)。然后，我们利用我们的神经体系结构搜索框架来探索最佳的3D模型(表示为SPVNAS)。我们在附录中提供了更多实现细节。在3D语义分割和3D对象检测上，我们提出的方法以更低的计算代价和测量的延迟一致地优于现有的模型(在GTX1080Ti GPU上)。</p>
+<p><img src="image-20211224104042933.png" alt="image-20211224104042933"></p>
+<p>表2. 基于SemanticKITTI的户外场景分割结果。SPVNAS比Minkowski Net有2.7倍的测试加速比。这里，<font color=red>红色数字</font>对应计算时间，<font color=blue>蓝色数字</font>对应后处理时间。∗：结果直接取自Behley等人。[3]。</p>
+<p><img src="image-20211224104407665.png" alt="image-20211224104407665"></p>
+<p>表3. 基于SemanticKITTI的户外场景分割结果。与基于二维投影的方法相比，SPVNAS至少减少了3.6倍的模型尺寸和7.1倍的计算量。这里，<font color=red>红色数字</font>对应于计算时间，<font color=blue>蓝色数字</font>对应于投影时间。</p>
+<h2 id="5-1-3D-Scene-Segmentation-三维场景语义分割"><a href="#5-1-3D-Scene-Segmentation-三维场景语义分割" class="headerlink" title="5.1 3D Scene Segmentation(三维场景语义分割)"></a>5.1 3D Scene Segmentation(三维场景语义分割)</h2><p>我们首先评估了我们的3D语义分割方法，并在大规模室外场景数据集SemancKITTI[3]上进行了实验。此数据集包含23,201个用于训练的LiDAR点云和20,351个用于测试的点云，并且它是从KITTI[12]里程计基准中的所有22个序列进行注释的。    我们在整个训练集上训练所有模型，并在单次扫描设置下报告官方测试集上的平均交集并集(mIoU)。我们在附录中提供了额外的实验结果(在验证和测试集上)。</p>
+<p><strong>结果。</strong> 如表2所示，SPVNAS在mIoU中的性能比以前最先进的MinkowskiNet[9]高3.3%，模型大小减少了1.7倍，计算量减少了1.5倍，测量加速比提高了1.1倍。此外，我们通过将资源约束设置为15G MAC来缩减我们的SPVNAS。这为我们提供了一个比MinkowskiNet小得多的模型，在mIoU中性能比MinkowskiNet高0.6%，模型规模减少了8.3倍，计算量减少了7.6倍，实测加速比提高了2.7倍。在图4中，我们还提供了SPVNAS和MinkowskiNet之间的一些定性比较：我们的SPVNAS具有更低的错误，特别是对于小实例。</p>
+<p>我们进一步将我们的SPVNAS与表3中基于2D投影的模型进行了比较。在使用较小的主干(通过移除解码器层)的情况下，SPVNAS在mIoU中比DarkNets[3]高出10%以上，具有1.2倍的实测加速比，尽管现代深度学习库对2D卷积进行了更好的优化。与其他二维方法相比，SPVNAS在模型尺寸减少8.5倍、计算量减少15.2倍的同时，精度也大大提高。此外，我们的SPVNAS实现了比KPConv[56]更高的mIoU值，KPConv[56]是以前最先进的基于点的模型，模型规模减少了17倍，运算量减少了23倍。</p>
+<h2 id="5-2-3D-Object-Detection-三维目标检测"><a href="#5-2-3D-Object-Detection-三维目标检测" class="headerlink" title="5.2 3D Object Detection (三维目标检测)"></a>5.2 3D Object Detection (三维目标检测)</h2><p>我们还对我们的三维目标检测方法进行了评估，并在室外场景数据集KITTI[12]上进行了实验。我们遵循普遍采用的训练-验证分离，其中3712个样本用于训练，3769个样本用于验证。我们报告了在测试集上的平均精度(mAP)，汽车的3D IoU阈值为0.7，骑自行车的人和行人的3D IoU阈值为0.5。我们请读者参考附录，以获得关于验证集的更多实验结果。</p>
+<p><img src="image-20211224134813457.png" alt="image-20211224134813457"></p>
+<p>表4. KITTI上的室外目标检测结果。SPVCNN在大多数类别中的表现都优于SEC-OND，特别是对于骑自行车的人来说。</p>
+<p><img src="image-20211224135336797.png" alt="image-20211224135336797"></p>
+<p>表5. 关于SemanticKITTI的每类性能的结果。SPVNAS在骑自行车和骑摩托车等小物体上有很大的优势。</p>
+<p><strong>结果.</strong> 我们将我们的方法与用于3D目标检测的最先进的单阶段模型SECOND[70]进行了比较。SECOND由使用3D稀疏卷积的稀疏编码器和在将编码特征投影到鸟瞰视图(BEV)之后执行2D卷积的区域建议网络组成。我们重新实现和重新训练SECOND：我们的实现已经超过了原始论文[70]中的结果。对于我们的模型，我们只用SPVConv替换SECOND中的这些3D稀疏卷积，同时保持所有其他设置不变，以便进行公平比较。如表4中总结的那样，我们的SPVCNN在自行车骑行者检测方面取得了显著的改进，为此，我们认为高分辨率的基于点的分支对于小的实例携带了更多的信息。</p>
+<h1 id="6-分析"><a href="#6-分析" class="headerlink" title="6 分析"></a>6 分析</h1><p>与以前最先进的Minkowski Net相比，我们的SPVNAS实现了更高的准确性和更高的效率。在本节中，我们将提供更详细的分析，以便更好地了解SPVConv和3D-NAS的贡献。</p>
+<h2 id="6-1-Sparse-Point-Voxel-Convolution-SPVConv"><a href="#6-1-Sparse-Point-Voxel-Convolution-SPVConv" class="headerlink" title="6.1 Sparse Point-Voxel Convolution (SPVConv)"></a>6.1 Sparse Point-Voxel Convolution (SPVConv)</h2><p>从表5可以看出，我们的SPVNAS在相对较小的对象(如行人和骑自行车的人)上具有非常大的优势(高达25%)。为了解释这一点，我们在SemanticKITTI上训练SPVCNN，留下了08序列用于可视化。在图5中，我们突出显示了基于点的分支(在最终的SPVConv中)中具有前5%特征范数的点。显然，以点数为基础的分部学习关注小实例，如行人、骑自行车的人、行李箱和交通标志，这与我们在这些课程上的卓越表现相呼应。</p>
+<p><img src="image-20211224140217781.png" alt="image-20211224140217781"></p>
+<p>图5. 以点为基础的分支，学会将注意力放在小实例上(即行人、骑自行车的人、交通标志)。这里，红色的点是基于点的分支中特征（feature）范数最大的前5%的点。</p>
+<p><img src="image-20211224140423367.png" alt="image-20211224140423367"></p>
+<p>图6. SemancKITTI中所有19个类别的基于点的分支和基于稀疏体素的分支中激活点的平均百分比[3]：基于点的分支参与较小的对象，因为红色条要高得多。</p>
+<p>进一步，我们从基于点的分支和基于稀疏体素的分支两个方面对特征范数进行了定量分析。具体地说，我们首先根据两个分支的特征范数分别对这些点进行排序，然后将每个分支中具有前10%特征范数的点标记为激活。从图6可以看出，对于小实例，基于点的分支中激活的点明显更多：例如，超过80%的点用于骑自行车的人。这表明我们在图5中的观察大体上是成立的。</p>
+<h2 id="6-2-3D-Neural-Architecture-Search-3D-NAS-三维神经结构搜索"><a href="#6-2-3D-Neural-Architecture-Search-3D-NAS-三维神经结构搜索" class="headerlink" title="6.2 3D Neural Architecture Search (3D-NAS)三维神经结构搜索"></a>6.2 3D Neural Architecture Search (3D-NAS)三维神经结构搜索</h2><p><img src="image-20211224141622276.png" alt="image-20211224141622276"></p>
+<p>图7. 一个高效的3D模块(SPVConv)和一个设计良好的网络结构(3D-NAS)对SPVNAS的最终性能同样重要：在Minkowski Net上减少7.6倍的计算量和2.7倍的实测加速比。</p>
+<p>在图7中，我们展示了mIoU vs.  #Mac和mIoU vs. 延迟的权衡，其中我们统一扩展MinkowskiNet和SPVCNN中的通道数作为我们的基线。    可以看出，更好的3D模块(SPVConv)和设计良好的网络架构(3D-NAS)对于最终的性能提升同样重要。值得注意的是，在mIoU中，SPVNAS在110ms延迟时的性能比Minkowski Net高出6%以上。如此大的改善来自于非均匀的通道缩放和弹性网络深度。在这些人工设计的模型(Minkowski Net和SPVCNN)中，77%的总计算量分布在上采样阶段。对于3D-NAS，这一比例降低到47-63%，使得计算更加平衡，并且更加强调下采样阶段(即特征提取)。</p>
+<p><img src="image-20211224141719456.png" alt="image-20211224141719456"></p>
+<p>图8. 进化搜索(ES)比随机搜索(RS)具有更高的样本效率。</p>
+<p>我们还将我们的进化搜索与随机体系结构搜索进行了比较，表明3D-NAS的成功并不完全来自搜索空间。如图8a所示，随机架构搜索的样本效率很低：第20代最好的模型表现甚至比第一代最好的模型更差。相反，我们的进化搜索能够逐步找到更好的架构，最终的最佳架构的性能比第一代架构高出约3%。我们还对从搜索空间采样的20个随机模型进行再训练，并将它们与图8b中的SPVNAS进行比较。结果表明，与这些随机模型的平均性能相比，我们的SPVNAS性能提高了0.8%。</p>
+<h1 id="7-结论"><a href="#7-结论" class="headerlink" title="7 结论"></a>7 结论</h1><p>我们提出了稀疏点体素卷积(SPVConv)，这是一个专门用于小目标识别的轻量级3D模块。将SPVCNN建立在SPVConv的基础上，解决了稀疏卷积不能始终保持高分辨率表示和点-体素卷积不能扩展到大型3D场景的问题。此外，我们还介绍了第一个用于三维场景理解的架构搜索框架3D-NAS，大大提高了SPVCNN的效率和性能。在室外3D场景基准上的大量实验表明，所得到的SPVNAS模型是轻量级、快速和强大的。我们希望这项工作能对未来高效三维深度学习的研究有所启发。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ol>
+<li>Alonso, I., Riazuelo, L., Montesano, L., Murillo, A.C.: 3D-MiniNet: Learning a2D Representation from Point Clouds for Fast and Efficient 3D LIDAR SemanticSegmentation. arXiv (2020)</li>
+<li>Bae, W., Lee, S., Lee, Y., Park, B., Chung, M., Jung, K.H.: Resource OptimizedNeural Architecture Search for 3D Medical Image Segmentation. In: MICCAI (2019)</li>
+<li>Behley, J., Garbade, M., Milioto, A., Quenzel, J., Behnke, S., Stachniss, C., Gall, J.:SemanticKITTI: A Dataset for Semantic Scene Understanding of LiDAR Sequences.In: ICCV (2019)</li>
+<li>Cai, H., Gan, C., Wang, T., Zhang, Z., Han, S.: Once for All: Train One Networkand Specialize it for Efficient Deployment. In: ICLR (2020)</li>
+<li>Cai, H., Lin, J., Lin, Y., Liu, Z., Wang, K., Wang, T., Zhu, L., Han, S.: AutoMLfor Architecting Efficient and Specialized Neural Networks. IEEE Micro (2019)</li>
+<li>Cai, H., Zhu, L., Han, S.: ProxylessNAS: Direct Neural Architecture Search onTarget Task and Hardware. In: ICLR (2019)</li>
+<li>Chang, A.X., Funkhouser, T., Guibas, L., Hanrahan, P., Huang, Q., Li, Z., Savarese,S., Savva, M., Song, S., Su, H., Xiao, J., Yi, L., Yu, F.: ShapeNet: An Information-Rich 3D Model Repository. arXiv (2015)</li>
+<li>Chen, Y., Yang, T., Zhang, X., Meng, G., Xiao, X., Sun, J.: DetNAS: BackboneSearch for Object Detection. In: NeurIPS (2019)</li>
+<li>Choy, C., Gwak, J., Savarese, S.: 4D Spatio-Temporal ConvNets: Minkowski Con-volutional Neural Networks. In: CVPR (2019)</li>
+<li>Cortinhal, T., Tzelepis, G., Aksoy, E.E.: SalsaNext: Fast, Uncertainty-aware Se-mantic Segmentation of LiDAR Point Clouds for Autonomous Driving. arXiv(2020)</li>
+<li>Deng, J., Dong, W., Socher, R., Li, L.J., Li, K., Fei-Fei, L.: ImageNet: A Large-ScaleHierarchical Image Database. In: CVPR (2009)</li>
+<li>Geiger, A., Lenz, P., Stiller, C., Urtasun, R.: Vision meets Robotics: The KITTIDataset. IJRR (2013)</li>
+<li>Geiger, A., Lenz, P., Urtasun, R.: Are we ready for Autonomous Driving? TheKITTI Vision Benchmark Suite. In: CVPR (2012)</li>
+<li>Graham, B., Engelcke, M., van der Maaten, L.: 3D Semantic Segmentation WithSubmanifold Sparse Convolutional Networks. In: CVPR (2018)</li>
+<li>Guo, Z., Zhang, X., Mu, H., Heng, W., Liu, Z., Wei, Y., Sun, J.: Single PathOne-Shot Neural Architecture Search with Uniform Sampling. In: ECCV (2020)</li>
+<li>Han, L., Zheng, T., Xu, L., Fang, L.: OccuSeg: Occupancy-aware 3D InstanceSegmentation. In: CVPR (2020)</li>
+<li>He, Y., Lin, J., Liu, Z., Wang, H., Li, L.J., Han, S.: AMC: AutoML for ModelCompression and Acceleration on Mobile Devices. In: ECCV (2018)</li>
+<li>Howard, A.G., Zhu, M., Chen, B., Kalenichenko, D., Wang, W., Weyand, T.,Andreetto, M., Adam, H.: MobileNets: Efficient Convolutional Neural Networks forMobile Vision Applications. arXiv (2017)</li>
+<li>Hu, Q., Yang, B., Xie, L., Rosa, S., Guo, Y., Wang, Z., Trigoni, N., Markham, A.:RandLA-Net: Efficient Semantic Segmentation of Large-Scale Point Clouds. In:CVPR (2020)</li>
+<li>Iandola, F.N., Han, S., Moskewicz, M.W., Ashraf, K., Dally, W.J., Keutzer, K.:SqueezeNet: AlexNet-Level Accuracy with 50x Fewer Parameters and &lt;0.5MBModel Size. arXiv (2016)</li>
+<li>Jiang, L., Zhao, H., Shi, S., Liu, S., Fu, C.W., Jia, J.: PointGroup: Dual-Set PointGrouping for 3D Instance Segmentation. In: CVPR (2020)</li>
+<li>Kim, S., Kim, I., Lim, S., Baek, W., Kim, C., Cho, H., Yoon, B., Kim, T.: ScalableNeural Architecture Search for 3D Medical Image Segmentation. In: MICCAI (2019)</li>
+<li>Lahoud, J., Ghanem, B., Pollefeys, M., Oswald, M.R.: 3D Instance Segmentationvia Multi-Task Metric Learning. In: ICCV (2019)</li>
+<li>Landrieu, L., Simonovsky, M.: Large-Scale Point Cloud Semantic SegmentationWith Superpoint Graphs. In: CVPR (2018)</li>
+<li>Lei, H., Akhtar, N., Mian, A.: Octree Guided CNN With Spherical Kernels for 3DPoint Clouds. In: CVPR (2019)</li>
+<li>Li, G., Qian, G., Delgadillo, I.C., Muller, M., Thabet, A., Ghanem, B.: SGAS:Sequential Greedy Architecture Search. In: CVPR (2020)</li>
+<li>Li, M., Lin, J., Ding, Y., Liu, Z., Zhu, J.Y., Han, S.: GAN Compression: EfficientArchitectures for Interactive Conditional GANs. In: CVPR (2020)</li>
+<li>Li, Y., Bu, R., Sun, M., Wu, W., Di, X., Chen, B.: PointCNN: Convolution onX-Transformed Points. In: NeurIPS (2018)</li>
+<li>Liu, C., Zoph, B., Neumann, M., Shlens, J., Hua, W., Li, L.J., Fei-Fei, L., Yuille, A.,Huang, J., Murphy, K.: Progressive Neural Architecture Search. In: ECCV (2018)</li>
+<li>Liu, H., Simonyan, K., Yang, Y.: DARTS: Differentiable Architecture Search. In:ICLR (2019)</li>
+<li>Liu, Z., Mu, H., Zhang, X., Guo, Z., Yang, X., Cheng, K.T., Sun, J.: MetaPruning:Meta Learning for Automatic Neural Network Channel Pruning. In: ICCV (2019)</li>
+<li>Liu, Z., Tang, H., Lin, Y., Han, S.: Point-Voxel CNN for Efficient 3D Deep Learning.In: NeurIPS (2019)</li>
+<li>Ma, N., Zhang, X., Zheng, H.T., Sun, J.: ShuffleNet V2: Practical Guidelines forEfficient CNN Architecture Design. In: ECCV (2018)</li>
+<li>Ma, Z., Zhou, Z., Liu, Y., Lei, Y., Yan, H.: Auto-ORVNet: Orientation-BoostedVolumetric Neural Architecture Search for 3D Shape Classification. IEEE Access(2020)</li>
+<li>Mao, J., Wang, X., Li, H.: Interpolated Convolutional Networks for 3D Point CloudUnderstanding. In: ICCV (2019)</li>
+<li>Maturana, D., Scherer, S.: VoxNet: A 3D Convolutional Neural Network for Real-Time Object Recognition. In: IROS (2015)</li>
+<li>Pagh, R., Rodler, F.F.: Cuckoo Hashing. Journal of Algorithms (2001)</li>
+<li>Qi, C.R., Chen, X., Litany, O., Guibas, L.J.: ImVoteNet: Boosting 3D ObjectDetection in Point Clouds with Image Votes. In: CVPR (2020)</li>
+<li>Qi, C.R., Litany, O., He, K., Guibas, L.J.: Deep Hough Voting for 3D ObjectDetection in Point Clouds. In: ICCV (2019)</li>
+<li>Qi, C.R., Su, H., Mo, K., Guibas, L.J.: PointNet: Deep Learning on Point Sets for3D Classification and Segmentation. In: CVPR (2017)</li>
+<li>Qi, C.R., Liu, W., Wu, C., Su, H., Guibas, L.J.: Frustum PointNets for 3D ObjectDetection from RGB-D Data. In: CVPR (2018)</li>
+<li>Qi, C.R., Su, H., Niessner, M., Dai, A., Yan, M., Guibas, L.J.: Volumetric andMulti-View CNNs for Object Classification on 3D Data. In: CVPR (2016)</li>
+<li>Qi, C.R., Yi, L., Su, H., Guibas, L.J.: PointNet++: Deep Hierarchical FeatureLearning on Point Sets in a Metric Space. In: NeurIPS (2017)</li>
+<li>Radosavovic, I., Johnson, J., Xie, S., Lo, W.Y., Dollar, P.: On Network DesignSpaces for Visual Recognition. In: ICCV (2019) </li>
+<li>Riegler, G., Ulusoy, A.O., Geiger, A.: OctNet: Learning Deep 3D Representationsat High Resolutions. In: CVPR (2017)</li>
+<li>Sandler, M., Howard, A., Zhu, M., Zhmoginov, A., Chen, L.C.: MobileNetV2:Inverted Residuals and Linear Bottlenecks. In: CVPR (2018)</li>
+<li>Shi, S., Guo, C., Jiang, L., Wang, Z., Shi, J., Wang, X., Li, H.: PV-RCNN: Point-Voxel Feature Set Abstraction for 3D Object Detection. In: CVPR (2020)</li>
+<li>Shi, S., Wang, X., Li, H.: PointRCNN: 3D Object Proposal Generation and Detectionfrom Point Cloud. In: CVPR (2019)</li>
+<li>Shi, S., Wang, Z., Shi, J., Wang, X., Li, H.: PV-RCNN: Point-Voxel Feature SetAbstraction for 3D Object Detection. TPAMI (2020)</li>
+<li>Stamoulis, D., Ding, R., Wang, D., Lymberopoulos, D., Priyantha, B., Liu, J.,Marculescu, D.: Single-Path NAS: Designing Hardware-Efficient ConvNets in lessthan 4 Hours. arXiv (2019)</li>
+<li>Strubell, E., Ganesh, A., McCallum, A.: Energy and Policy Considerations for DeepLearning in NLP. In: ACL (2019)</li>
+<li>Su, H., Jampani, V., Sun, D., Maji, S., Kalogerakis, E., Yang, M.H., Kautz, J.:SPLATNet: Sparse Lattice Networks for Point Cloud Processing. In: CVPR (2018)</li>
+<li>Tan, M., Chen, B., Pang, R., Vasudevan, V., Sandler, M., Howard, A., Le, Q.V.:MnasNet: Platform-Aware Neural Architecture Search for Mobile. In: CVPR (2019)</li>
+<li>Tan, M., Le, Q.V.: EfficientNet: Rethinking Model Scaling for Convolutional NeuralNetworks. In: ICML (2019)</li>
+<li>Tatarchenko, M., Park, J., Koltun, V., Zhou, Q.Y.: Tangent Convolutions for DensePrediction in 3D. In: CVPR (2018)</li>
+<li>Thomas, H., Qi, C.R., Deschaud, J.E., Marcotegui, B., Goulette, F., Guibas, L.J.:KPConv: Flexible and Deformable Convolution for Point Clouds. In: ICCV (2019)</li>
+<li>Wang, H., Wu, Z., Liu, Z., Cai, H., Zhu, L., Gan, C., Han, S.: HAT: Hardware-AwareTransformers for Efficient Natural Language Processing. In: ACL (2020)</li>
+<li>Wang, K., Liu, Z., Lin, Y., Lin, J., Han, S.: HAQ: Hardware-Aware AutomatedQuantization with Mixed Precision. In: CVPR (2019)</li>
+<li>Wang, K., Liu, Z., Lin, Y., Lin, J., Han, S.: Hardware-Centric AutoML for Mixed-Precision Quantization. IJCV (2020)</li>
+<li>Wang, P.S., Liu, Y., Guo, Y.X., Sun, C.Y., Tong, X.: O-CNN: Octree-based Convo-lutional Neural Networks for 3D Shape Analysis. In: SIGGRAPH (2017)</li>
+<li>Wang, P.S., Liu, Y., Guo, Y.X., Sun, C.Y., Tong, X.: Adaptive O-CNN: A Patch-based Deep Representation of 3D Shapes. In: SIGGRAPH Asia (2018)</li>
+<li>Wang, T., Wang, K., Cai, H., Lin, J., Liu, Z., Wang, H., Lin, Y., Han, S.: APQ:Joint Search for Network Architecture, Pruning and Quantization Policy. In: CVPR(2020)</li>
+<li>Wang, Y., Sun, Y., Liu, Z., Sarma, S.E., Bronstein, M.M., Solomon, J.M.: DynamicGraph CNN for Learning on Point Clouds. In: SIGGRAPH (2019)</li>
+<li>Wang, Z., Lu, F.: VoxSegNet: Volumetric CNNs for Semantic Part Segmentation of3D Shapes. TVCG (2019)</li>
+<li>Wong, K.C., Moradi, M.: SegNAS3D: Network Architecture Search with Derivative-Free Global Optimization for 3D Image Segmentation. In: MICCAI (2019)</li>
+<li>Wu, B., Dai, X., Zhang, P., Wang, Y., Sun, F., Wu, Y., Tian, Y., Vajda, P., Jia, Y.,Keutzer, K.: FBNet: Hardware-aware Efficient Convnet Design via DifferentiableNeural Architecture Search. In: CVPR (2019)</li>
+<li>Wu, W., Qi, Z., Fuxin, L.: PointConv: Deep Convolutional Networks on 3D PointClouds. In: CVPR (2019)</li>
+<li>Xu, C., Wu, B., Wang, Z., Zhan, W., Vajda, P., Keutzer, K., Tomizuka, M.: Squeeze-SegV3: Spatially-Adaptive Convolution for Efficient Point-Cloud Segmentation. In:ECCV (2020)</li>
+<li>Xu, Y., Fan, T., Xu, M., Zeng, L., Qiao, Y.: SpiderCNN: Deep Learning on PointSets with Parameterized Convolutional Filters. In: ECCV (2018)</li>
+<li>Yan, Y., Mao, Y., Li, B.: SECOND: Sparsely Embedded Convolutional Detection.Sensors (2018)</li>
+<li>Yang, B., Wang, J., Clark, R., Hu, Q., Wang, S., Markham, A., Trigoni, N.: LearningObject Bounding Boxes for 3D Instance Segmentation on Point Clouds. In: NeurIPS(2019)</li>
+<li>Yang, D., Roth, H., Xu, Z., Milletari, F., Zhang, L., Xu, D.: Searching LearningStrategy with Reinforcement Learning for 3D Medical Image Segmentation. In:MICCAI (2019)</li>
+<li>Yang, Z., Sun, Y., Liu, S., Shen, X., Jia, J.: STD: Sparse-to-Dense 3D ObjectDetector for Point Cloud. In: ICCV (2019)</li>
+<li>Yu, Q., Yang, D., Roth, H., Bai, Y., Zhang, Y., Yuille, A., Xu, D.: C2FNAS:Coarse-to-Fine Neural Architecture Search for 3D Medical Image Segmentation. In:CVPR (2020)</li>
+<li>Zhang, X., Zhou, X., Lin, M., Sun, J.: ShuffleNet: An Extremely Efficient Convolu-tional Neural Network for Mobile Devices. In: CVPR (2018)</li>
+<li>Zhang, Y., Zhou, Z., David, P., Yue, X., Xi, Z., Gong, B., Foroosh, H.: Polar-Net: An Improved Grid Representation for Online LiDAR Point Clouds SemanticSegmentation. In: CVPR (2020)</li>
+<li>Zhou, Y., Tuzel, O.: VoxelNet: End-to-End Learning for Point Cloud Based 3DObject Detection. In: CVPR (2018)</li>
+<li>Zhu, Z., Liu, C., Yang, D., Yuille, A., Xu, D.: V-NAS: Neural Architecture Searchfor Volumetric Medical Image Segmentation. In: 3DV (2019)</li>
+<li>Zoph, B., Le, Q.V.: Neural Architecture Search with Reinforcement Learning. In:ICLR (2017)</li>
+<li>Zoph, B., Vasudevan, V., Shlens, J., Le, Q.V.: Learning Transferable Architecturesfor Scalable Image Recognition. In: CVPR (2018)</li>
+</ol>
+<h1 id="A-1-Implementation-Details实现细节"><a href="#A-1-Implementation-Details实现细节" class="headerlink" title="A.1 Implementation Details实现细节"></a>A.1 Implementation Details实现细节</h1><p>我们提供了更多关于如何建设我们的骨干网络(SPVCNN)的实施细节，以及如何训练超级网络和搜索最佳模型(3D-NAS)。</p>
+<h2 id="A-1-1-SPVCNN-Backbone-Network-主干网络"><a href="#A-1-1-SPVCNN-Backbone-Network-主干网络" class="headerlink" title="A.1.1 SPVCNN: Backbone Network(主干网络)"></a>A.1.1 SPVCNN: Backbone Network(主干网络)</h2><p>在Minkowski Net[9]的基础上，我们将残差稀疏卷积块与高分辨率的点为基础的分支包裹起来，从而构建我们的骨干网络。具体地说，第一个SPVConv在第一层之前体素化，在词干阶段之后(即，在第一个下采样之前)去体素化。第二个SPVConv紧跟在第一个SPVConv之后进行体素化，并在所有四个下采样阶段之后取消体素化。最后两个SPVConv的每个都围绕两个上采样级。</p>
+<p>此外，我们在PVCNN[32]的基础上设计了一个较小的主干，将每个体积卷积直接替换为一个卷积层(随后是归一化层和激活层)和两个剩余的稀疏卷积块。</p>
+<h2 id="A-1-2-3D-NAS-Architecture-Search"><a href="#A-1-2-3D-NAS-Architecture-Search" class="headerlink" title="A.1.2 3D-NAS: Architecture Search"></a>A.1.2 3D-NAS: Architecture Search</h2><p>我们对支持细粒度信道设置的超级网络进行了15个时期的训练，起始学习率为0.24，余弦学习率衰减。然后，我们再训练15个时期，将弹性网络深度与起始学习率0.096和余弦学习率衰减结合起来。之后，我们在官方验证集(序列08)上对20代的50个候选群体执行进化体系结构搜索。最优架构直接从超级网络中提取出来，经过10个时代的精调后提交给测试服务器，起始学习率为0.032，余弦学习率衰减。</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2021/12/21/2021-12-21%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/cat.png" alt="ZEILAO_o's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        zeilaogu@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2021/12/">十二月 2021<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/11/">十一月 2021<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/09/">九月 2020<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/">工作记录<span class="sidebar_archives-count">17</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E7%AE%97%E6%B3%95/">算法<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E8%AE%BA%E6%96%87/">论文<span class="sidebar_archives-count">8</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;ZEILAO的茶屋
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?wgjW/HuQG9JDgvPDPoRAng==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?LT4t6iE6m8TO1BLGGiNJqA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('
+<link rel="stylesheet" href="/css/uc.css">
+');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+        
+        
+        HanabiBrowser.start('pre code',true);
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 0000;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+    
+</html>
